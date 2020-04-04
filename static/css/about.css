@@ -1,0 +1,9 @@
+.about_image{
+	height: 350px;
+	object-fit: contain;
+}
+.about_image_div{
+	align-content: center;
+	border: 5px;
+	border-color: red;
+}

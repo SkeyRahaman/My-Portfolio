@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+<div class="card mx-auto p-3" style="width: 75%">
+	<div class="">
+		Hay!
+	</div>
+	<br>
+	<div style="width: 100%">
+		<form>
+			<div class="form-group">
+					<label for="message"><strong class="lead">Type Your Message Here:-</strong></label>
+					<br>
+					<textarea class="form-control" rows="3" name="message"  placeholder="Under 250 charecter." id="message_input"></textarea>
+					<br>
+					<button type="button" class="btn btn-success" id="send_button" onclick="send_text_message()">Send</button>
+				</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+	document.getElementById('footer').style.position = "absolute";
+	
+	// document.getElementById('message_input').value.addEventListener("keypress" , function(event){
+	// if(event.keyCode === 13){
+	// 	send_text_message();
+	// };
+
+	let  send_text_message = () =>{
+		message = document.getElementById('message_input').value
+		
+		if(message.length > 0){
+			url = "/send_message/" + message;
+			fetch(url)
+			.then(function(responce){
+				responce.json().then(function(data){
+					if(data === true){
+						alert("Your message is send sucessfully!");
+						document.getElementById('message_input').value = ""
+					}
+					else{
+						alert("There is a error in this process! Please try after some thime!.");
+					}
+				})
+			})
+		};
+		
+	}
+
+	
+
+	
+</script>
+{% endblock script %}

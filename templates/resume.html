@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div>
+	<h1>I am HTML</h1>
+	<div class="embed-responsive embed-responsive-16by9  text-center m-auto" style="width: 60% ; height: 100%">
+		<embed class="embed-responsive-item" src="{{url_for('static' , filename='pdf/RESUME.pdf')}}" />
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+
+{% block style %}
+	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/home.css' )}}">
+	<link href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Merriweather&display=swap" rel="stylesheet">
+{% endblock style %}
+
+{% block content %}
+	<div class="bg-light card" id="main_container">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 card-body" id="main_photo">
+					<img class="img-thumbnail img-fluid mx-auto" src="{{url_for('static' , filename = 'images/dp1.jpg')}}"
+					style="margin-bottom: 10%; height: 400px; object-fit: contain;"/>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 card-body" id="primary_details">
+					<p class="hello"><span class="bg-danger">Hello</span></p>
+					<div class="name">
+						<span class="im">I'm </span>
+						<div class="name_dis">
+							<span class="fullname">MD SHAKIB MONDAL</span><br>
+							<small>
+								<span class="designation">Machine-Learning Enthusiasts | Computer Science Engineer</span>
+							</small>
+						</div>
+					</div>
+
+					<div class="about_me">
+						<p>
+							I am a Computer Science Engineer 'who really wants to be one'. With all the elementary subjects in engineering, I have a great interest in Machine Learning And Data Science. And looking forward in having a career in this field.
+						<p>
+					</div>
+
+
+
+					<div class="container-fluid other_details">
+						<div class="row">
+
+							<div class="detail_type col-3">Age</div>
+
+
+							<div class="detail_midle col-1">:</div>
+
+							<div class="detail_description col-6">{{age}}</div>
+
+
+						</div>
+						<div class="row">
+
+							<div class="detail_type col-3">Address</div>
+
+
+							<div class="detail_midle col-1">:</div>
+
+							<div class="detail_description col-6">South Kolorah, Kolorah, Domjur, Howrah, 711411, India</div>
+
+
+						</div>
+						<div class="row">
+
+							<div class="detail_type col-3">Email</div>
+
+
+							<div class="detail_midle col-1">:</div>
+
+							<div class="detail_description col-6">sakibmondal7@gmail.com</div>
+
+
+						</div>
+						<div class="row">
+
+							<div class="detail_type col-3">Phone</div>
+
+
+							<div class="detail_midle col-1">:</div>
+
+							<div class="detail_description col-6">+91-903-838-3080</div>
+
+
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bg-danger footer_above">
+
+			<div class= "p-2 container">
+
+<!-- 				<div>
+					<img src="https://img.icons8.com/color/48/000000/linkedin.png"/>
+				</div>
+				
+				<div>
+					<img src="https://img.icons8.com/ios-filled/48/000000/github.png"/>
+				</div>
+
+				<div>
+					<img src="https://img.icons8.com/color/48/000000/youtube.png"/>
+				</div>
+
+				<div>
+					<img src="<img src="https://img.icons8.com/color/48/000000/gmail.png"/>"/>
+				</div>
+
+				<div>
+					<img src="https://img.icons8.com/color/48/000000/facebook-new.png"/>
+				</div>
+				
+				<div>
+					<img src="https://img.icons8.com/color/48/000000/instagram-new.png"/>
+				</div> -->
+
+
+				<div>
+					<a href="https://www.linkedin.com/in/shakib-mondal/">
+						<img src="{{url_for('static',filename = 'images/linkedin.png')}}" class="footer_image">
+					</a>
+				</div>
+
+				
+				<div>
+					<a href="https://github.com/SkeyRahaman">
+						<img src="{{url_for('static',filename = 'images/github.png')}}" class="footer_image">
+					</a>
+				</div>
+
+				<div>
+					<a href="https://www.hackerrank.com/Shakib_Mondal">
+						<img src="{{url_for('static',filename = 'images/hackerrank.png')}}" class="footer_image">
+					</a>
+				</div>
+
+				<div>
+					<a href="https://www.youtube.com/channel/UC96znML3SlhW-Q3t2QS4Ecw">
+						<img src="{{url_for('static',filename = 'images/youtube.png')}}" class="footer_image">
+					</a>
+				</div>
+
+				<div>
+					<a href="https://www.facebook.com/sakib.mondal.73">
+						<img src="{{url_for('static',filename = 'images/facebook.png')}}" class="footer_image">
+					</a>
+				</div>
+
+				
+				<div>
+					<a href="https://www.instagram.com/skey_rahaman/">
+						<img src="{{url_for('static',filename = 'images/instagram.png')}}" class="footer_image">
+					</a>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	
+{% endblock content %}
