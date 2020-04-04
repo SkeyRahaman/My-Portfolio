@@ -2,5 +2,5 @@ static/data/credential.py
 .idea
 Portfolio.zip
 venv
-_pycache_
+__pycache__
 
