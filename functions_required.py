@@ -88,12 +88,12 @@ def get_projects():
     cards = soup.find_all('div', {'class': 'pinned-item-list-item-content'})
     projects = []
     for card in cards:
-        name = card.find('span', {'class': 'repo'}).text
+        url = "https://github.com" + card.find('a').get("href")
+        name = card.find('span', {'class': 'repo'}).text.replace("-", " ")
         try:
             des = card.find('p', {'class': 'pinned-item-desc'}).text
         except:
             des = ""
         lang = card.find('span', {'itemprop': 'programmingLanguage'}).text
-        projects.append([name, des, lang])
+        projects.append([name, des, lang, url])
     return projects
-print(datetime.now().time())

@@ -27,10 +27,10 @@
 <script type="text/javascript">
 	document.getElementById('footer').style.position = "absolute";
 	
-	// document.getElementById('message_input').value.addEventListener("keypress" , function(event){
-	// if(event.keyCode === 13){
-	// 	send_text_message();
-	// };
+	document.getElementById('message_input').addEventListener("keypress" , function(event){
+	if(event.keyCode === 13){
+		send_text_message();
+	};
 
 	let  send_text_message = () =>{
 		message = document.getElementById('message_input').value

@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, jsonify
 import functions_required as fn
-
 from static.data import data
 
 application = Flask(__name__)
@@ -41,6 +40,11 @@ def unknown_message():
 @application.route("/send_message/<message>")
 def send_message(message):
     return jsonify(fn.send_mail(message))
+
+
+@application.route("/tic_tac_toe")
+def game_tic_tac_toe():
+    return render_template("game_tic_tac_toe.html")
 
 
 if __name__ == "__main__":
