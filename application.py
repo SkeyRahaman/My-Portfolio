@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, jsonify
 import functions_required as fn
 from static.data import data
 
-application = Flask(__name__)
+app = application = Flask(__name__)
 
 
 @application.route("/")
