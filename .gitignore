@@ -1,6 +1,10 @@
-static/data/credential.py
 .idea
 Portfolio.zip
 venv
 __pycache__
-
+heroku_steps.txt
+demo.py
+demo1.py
+ *.pyc
+.DS_Store
+.env			
