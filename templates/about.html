@@ -15,7 +15,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-5 col-sm-12 about_image_div text-center m-auto">
-						<img class="about_image img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp2.jpg')}}"/>
+						<img class="about_image img-thumbnail img-fluid m-auto" src="{{url_for('static' , filename = 'images/dp2.jpg')}}"/>
 					</div>
 					<div class="col-md-7 col-sm-12">
 						<div class='card p-2 bg-pink'>
@@ -41,7 +41,7 @@
 			<div class="container-fluid">
 				<div class="row">
 
-					<div class="col-md-5 col-sm-12 text-cente mx-auto">
+					<div class="col-md-5 col-sm-12 about_image_div text-center">
 						<img class="about_image img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp3.jpg')}}"/>
 					</div>
 
@@ -65,16 +65,16 @@
 						</div>
 					</div>
 
-					<div class="col-md-5 col-sm-12 text-cente mx-auto">
+					<div class="col-md-5 col-sm-12 text-center">
 						<img class="about_image img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp4.jpg')}}"/>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-5 col-sm-12 text-cente m-auto">
+					<div class="col-md-5 col-sm-12 text-center m-auto">
 						<img class="about_image img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp5.jpg')}}"/>
 					</div>
 					
-					<div class="card m-2  p-2 col-md- col-sm-12 ">
+					<div class="card m-2  p-2 col-md-5 col-sm-12 ">
 						<div class="text-uppercase text-center">
 							<p><h4>College Life</h4></p>
 						</div>
@@ -139,7 +139,7 @@
 			<div class="container-fluid">
 				<div class="row">
 				{% for blog in blogs %}
-				<div class="col-6 m-auto">
+				<div class="col-md-6 col-sm-12 m-auto">
 					<div class="card p-3 m-3">
 						<div class="img-thumbnail img-fluid">
 							<img src="{{blog[1]}}" style="width: 100%;height: 200px;"/>
