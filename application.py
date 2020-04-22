@@ -46,6 +46,7 @@ def send_message(message):
 def game_tic_tac_toe():
     return render_template("game_tic_tac_toe.html")
 
+
 @app.route("/result_12")
 def result_12():
     return render_template("Result_12.html")
