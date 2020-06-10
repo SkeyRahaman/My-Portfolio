@@ -54,7 +54,7 @@ def get_blogs(amount="all"):
         soup = BeautifulSoup(requests.get(url).text, "html.parser")
         blog = []
         if amount == "all":
-            data_list = soup.find_all(class_='r s y')
+            data_list = soup.find_all(class_='r s y')[0:2]
         else:
             data_list = soup.find_all(class_='r s y')[0:2]
         for data in data_list:
@@ -68,7 +68,7 @@ def get_blogs(amount="all"):
             text_page = BeautifulSoup(requests.get(page_url).text,
                                       "html.parser")
             actual_text = ''
-            for i in text_page.find_all('p', {"class": "cx"}):
+            for i in text_page.find_all('p', {"class": "hb"}):
                 actual_text += (i.text + " <br> \n")
                 if len(actual_text) > 500:
                     break
