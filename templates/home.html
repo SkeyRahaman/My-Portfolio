@@ -6,6 +6,9 @@
 {% endblock style %}
 
 {% block content %}
+
+    <img id="cover_photo" src="{{url_for('static' , filename = 'images/cover_1.jpg')}}" style="top: 0; z-index: 0;	height: 75%;	width: 100%;	z-index: -1;	position: absolute; opacity: .8">
+    
 	<div class="bg-light card" id="main_container">
 		<div class="container-fluid">
 			<div class="row">
