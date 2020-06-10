@@ -14,13 +14,30 @@
 	{% block style %}
 	{% endblock style %}
 </head>
-<body style="background: linear-gradient(to right,#f9dbe5,white,#62c8ee)">
+<body style="background: linear-gradient(to right,#f9dbe5,white,#62c8ee);background-repeat: no-repeat;">
+	<style type="text/css">
+		.heading_name{
+			font-size: 50px;
+			font-weight: bold;
+		}
+		@media (max-width:700px){
+			.heading_name{
+			font-size: 28px;
+		}
+		}
+	</style>
+
 	<img id="cover_photo" src="{{url_for('static' , filename = 'images/cover_1.jpg')}}" style="top: 0; z-index: 0;	height: 75%;	width: 100%;	z-index: -1;	position: absolute; opacity: .8; overflow: auto;" >
+	
+
+
 	<div>
-
-
 		<nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color" style="z-index: 10">
-		    <a class="navbar-brand " href="/"><h1>MD SHAKIB MONDAL</h1></a>
+		    
+
+		    <a class="navbar-brand heading_name" href="/">MD SHAKIB MONDAL</a>
+		    
+
 		    <button class="navbar-toggler collapsed bg-secondary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
 		        <span class="navbar-toggler-icon" ></span>
 		    </button>
