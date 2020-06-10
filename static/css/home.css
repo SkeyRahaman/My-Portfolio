@@ -1,5 +1,4 @@
 #main_container{
-	width: 80%;
 	margin: auto;
 	border-radius: 10px;
 	margin-bottom: 10%;
@@ -18,10 +17,6 @@
 	font-size: 20px;
 	text-shadow: 5px;
 }
-.name .name_dis{
-	text-align: center;
-	width: 60%;
-}
 .name .im{
 	font-size: 20px;
 }
@@ -36,15 +31,6 @@
 	padding-top: 5px;
 	font-size: 10px;
 }
-.other_details .detail_type{
-
-}
-.other_details .detail_midle{
-
-}
-.other_details .detail_description{
-
-}
 .footer_above{
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
@@ -52,7 +38,6 @@
 .footer_image{
 	height: 45px;
 	width: 45px;
-	
 }
 #main_photo{
 	max-width: 500px;
@@ -60,6 +45,9 @@
 .other_details{
     	font-size: 30px;
     }
+.about_me{
+	font-size: 25px;
+}
 @media (max-width:700px){
     .footer_image {
 		height: 20px;
@@ -70,6 +58,12 @@
     }
     #main_photo{
 		max-width: 250px;
+	}
+	.text_down{
+		font-size: 10px;
+	}
+	.about_me{
+		font-size: 15px;
 	}
 
 }
