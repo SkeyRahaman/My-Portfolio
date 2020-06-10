@@ -34,7 +34,7 @@
 }
 .other_details{
 	padding-top: 5px;
-	font-size: 20px;
+	font-size: 10px;
 }
 .other_details .detail_type{
 
@@ -53,4 +53,23 @@
 	height: 45px;
 	width: 45px;
 	
+}
+#main_photo{
+	max-width: 500px;
+}
+.other_details{
+    	font-size: 30px;
+    }
+@media (max-width:700px){
+    .footer_image {
+		height: 20px;
+		width: 20px;
+    }
+    .other_details{
+    	font-size: 15px;
+    }
+    #main_photo{
+		max-width: 250px;
+	}
+
 }
