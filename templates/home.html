@@ -6,10 +6,53 @@
 {% endblock style %}
 
 {% block content %}
+<style type="text/css">
+	#main_container{
+		max-width: 95%;
+	}
+	#main_photo{
+		max-width: 550px;
+	}
+	.im{
+		font-size: 30px;
+	}
+	.about_me{
+		font-size: 25px;
+	}
+	.text_down{
+		font-size: 20px;
+	}
+	.footer_image{
+		width: 50px;
+		height: 50px;
+	}
+	.footer_image_con{
+		width: 100%;
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
 
-    <img id="cover_photo" src="{{url_for('static' , filename = 'images/cover_1.jpg')}}" style="top: 0; z-index: 0;	height: 75%;	width: 100%;	z-index: -1;	position: absolute; opacity: .8">
-    
-	<div class="bg-light card m-3" id="main_container">
+@media (max-width:700px){
+	.fullname{
+		font-size: 30px;
+	}
+	.im{
+		font-size: 20px;
+	}
+	#main_photo{
+		max-width: 300px;
+	}
+	.about_me{
+		font-size: 20px;
+	}
+	.text_down{
+		font-size: 15px;
+	}
+</style>
+
+
+
+	<div class="bg-light card m-auto" id="main_container">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-5 col-sm-12 card-body text-center m-auto" id="main_photo" >
@@ -20,9 +63,9 @@
 					<div class="name">
 						<span class="im">Hello I'm </span>
 						<div class="name_dis">
-							<span class="fullname text-center">MD SHAKIB MONDAL</span><br>
-							<small>
-								<span class="designation">Machine-Learning Enthusiasts | Computer Science Engineer</span>
+							<h1 class="fullname text-center"><u>MD SHAKIB MONDAL</u></h1>
+							<small class="text-center">
+								<p class="designation">Machine-Learning Enthusiasts | Computer Science Engineer</p>
 							</small>
 						</div>
 					</div>
@@ -34,7 +77,7 @@
 					</div>
 
 
-					<div class="m-0 text_down">
+					<div class="text_down">
 						<div class="container-fluid other_details">
 							<div class="row">
 
@@ -86,81 +129,44 @@
 				</div>
 			</div>
 		</div>
-		<div class="bg-danger footer_above">
-
-			<div class= "p-2 container">
-
-<!-- 				<div>
-					<img src="https://img.icons8.com/color/48/000000/linkedin.png"/>
-				</div>
-				
-				<div>
-					<img src="https://img.icons8.com/ios-filled/48/000000/github.png"/>
-				</div>
-
-				<div>
-					<img src="https://img.icons8.com/color/48/000000/youtube.png"/>
-				</div>
-
-				<div>
-					<img src="<img src="https://img.icons8.com/color/48/000000/gmail.png"/>"/>
-				</div>
-
-				<div>
-					<img src="https://img.icons8.com/color/48/000000/facebook-new.png"/>
-				</div>
-				
-				<div>
-					<img src="https://img.icons8.com/color/48/000000/instagram-new.png"/>
-				</div> -->
-
-
-				<div>
-					<a href="https://www.linkedin.com/in/shakib-mondal/">
-						<img src="{{url_for('static',filename = 'images/linkedin.png')}}" class="footer_image">
-					</a>
-				</div>
-
-				
-				<div>
-					<a href="https://github.com/SkeyRahaman">
-						<img src="{{url_for('static',filename = 'images/github.png')}}" class="footer_image">
-					</a>
-				</div>
-
-				<div>
-					<a href="https://www.hackerrank.com/Shakib_Mondal">
-						<img src="{{url_for('static',filename = 'images/hackerrank.png')}}" class="footer_image">
-					</a>
-				</div>
-
-				<div>
-					<a href="https://medium.com/@shakibmondal">
-						<img src="{{url_for('static',filename = 'images/medium.png')}}" class="footer_image">
-					</a>
-				</div>
-
-				<div>
-					<a href="https://www.youtube.com/channel/UC96znML3SlhW-Q3t2QS4Ecw">
-						<img src="{{url_for('static',filename = 'images/youtube.png')}}" class="footer_image">
-					</a>
-				</div>
-
-				<div>
-					<a href="https://www.facebook.com/sakib.mondal.73">
-						<img src="{{url_for('static',filename = 'images/facebook.png')}}" class="footer_image">
-					</a>
-				</div>
-
-				
-				<div>
-					<a href="https://www.instagram.com/skey_rahaman/">
-						<img src="{{url_for('static',filename = 'images/instagram.png')}}" class="footer_image">
-					</a>
-				</div>
-
+		<div class="bg-danger row m-auto footer_image_con">
+			<div class="col-2 m-auto text-center">
+				<a href="https://www.linkedin.com/in/shakib-mondal/">
+					<img src="{{url_for('static',filename = 'images/linkedin.png')}}" class="footer_image">
+				</a>
 			</div>
 
+			
+			<div class="col-2 m-auto text-center">
+				<a href="https://github.com/SkeyRahaman">
+					<img src="{{url_for('static',filename = 'images/github.png')}}" class="footer_image">
+				</a>
+			</div>
+
+			<div class="col-2 m-auto text-center">
+				<a href="https://www.hackerrank.com/Shakib_Mondal">
+					<img src="{{url_for('static',filename = 'images/hackerrank.png')}}" class="footer_image">
+				</a>
+			</div>
+
+			<div class="col-2 m-auto text-center">
+				<a href="https://medium.com/@shakibmondal">
+					<img src="{{url_for('static',filename = 'images/medium.png')}}" class="footer_image">
+				</a>
+			</div>
+
+			<div class="col-2 m-auto text-center">
+				<a href="https://www.facebook.com/sakib.mondal.73">
+					<img src="{{url_for('static',filename = 'images/facebook.png')}}" class="footer_image">
+				</a>
+			</div>
+
+			
+			<div class="col-2 m-auto text-center">
+				<a href="https://www.instagram.com/skey_rahaman/">
+					<img src="{{url_for('static',filename = 'images/instagram.png')}}" class="footer_image">
+				</a>
+			</div>
 		</div>
 	</div>
 	
