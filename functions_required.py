@@ -54,9 +54,9 @@ def get_blogs(amount="all"):
         soup = BeautifulSoup(requests.get(url).text, "html.parser")
         blog = []
         if amount == "all":
-            data_list = soup.find_all(class_='r s y')[0:2]
+            data_list = soup.find_all(class_='dm hh hi dh hj')[0:2]
         else:
-            data_list = soup.find_all(class_='r s y')[0:2]
+            data_list = soup.find_all(class_='dm hh hi dh hj')[0:2]
         for data in data_list:
             heading = data.find("h1").text
             image_link = data.find('img').get("src")
