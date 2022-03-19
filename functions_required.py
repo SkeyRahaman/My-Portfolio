@@ -31,7 +31,8 @@ def send_mail(message):
         msg['From'] = credential.email_user
         msg['To'] = to
         msg['subject'] = "Message From An Unknown Person Through Your Portfolio.!"
-        message = read_template("templates/message.html").substitute(message=message, time=datetime.now().time(), date=datetime.now().date())
+        message = read_template("templates/message.html").substitute(message=message, time=datetime.now().time(),
+                                                                     date=datetime.now().date())
         msg.attach(MIMEText(message, 'html'))
         server.send_message(msg)
         del msg
@@ -97,3 +98,48 @@ def get_projects():
         lang = card.find('span', {'itemprop': 'programmingLanguage'}).text
         projects.append([name, des, lang, url])
     return projects
+
+
+def solve(bo):
+    next = next_blank(bo)
+    if not next:
+        return True, bo
+    for i in range(1, 10):
+        if check_board(bo, i, next):
+            bo[next[0]][next[1]] = i
+            tf, bo = solve(bo)
+            if tf:
+                return True, bo
+            bo[next[0]][next[1]] = 0
+    return False, bo
+
+
+def check_board(bo, num, pos):
+    # check in row
+    for i in range(9):
+        if bo[pos[0]][i] == num:
+            return False
+
+    # check in column
+    for i in range(9):
+        if bo[i][pos[1]] == num:
+            return False
+
+    # check in small box
+    box_x = pos[0] // 3
+    box_y = pos[1] // 3
+
+    for row in range(box_x * 3, box_x * 3 + 3):
+        for col in range(box_y * 3, box_y * 3 + 3):
+            if bo[row][col] == num:
+                return False
+    return True
+
+
+def next_blank(bo):
+    for row in range(9):
+        for col in range(9):
+            if bo[row][col] == 0:
+                return (row, col)
+
+    return False
