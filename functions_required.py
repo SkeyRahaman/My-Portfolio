@@ -7,6 +7,37 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from string import Template
 from static.data import credential
+import random
+
+
+def generate_question_grid():
+    global g, a, num_count
+    track = True
+    z = 0
+    while track:
+        z += 1
+        a = [[0 for i in range(10)] for j in range(10)]
+        num_count = 0
+        while num_count < 15:
+            cell = random.randint(0, 80)
+            i, j = cell // 9, cell % 9
+            if a[i][j] == 0:
+                num = random.randint(1, 9)
+                check = check_board(a, num, (i, j))
+                if check:
+                    a[i][j] = num
+                    num_count += 1
+        g = [[f for f in m] for m in a]
+        tf, g = solve(g)
+        track = not tf
+    while num_count < 35:
+        cell = random.randint(0, 80)
+        i, j = cell // 9, cell % 9
+        if a[i][j] == 0:
+            a[i][j] = g[i][j]
+            num_count += 1
+
+    return a
 
 
 def read_template(filename):
@@ -117,12 +148,12 @@ def solve(bo):
 def check_board(bo, num, pos):
     # check in row
     for i in range(9):
-        if bo[pos[0]][i] == num:
+        if bo[pos[0]][i] == num and i != pos[1]:
             return False
 
     # check in column
     for i in range(9):
-        if bo[i][pos[1]] == num:
+        if bo[i][pos[1]] == num and i != pos[0]:
             return False
 
     # check in small box
@@ -131,7 +162,7 @@ def check_board(bo, num, pos):
 
     for row in range(box_x * 3, box_x * 3 + 3):
         for col in range(box_y * 3, box_y * 3 + 3):
-            if bo[row][col] == num:
+            if bo[row][col] == num and row != pos[0] and col != pos[1]:
                 return False
     return True
 
