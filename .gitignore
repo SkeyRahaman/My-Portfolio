@@ -1,7 +1,3 @@
-venv
-heroku_steps.txt
-demo.py
-demo1.py
- *.pyc
-.DS_Store
-.env			
+venv/
+__pycache__/
+.idea/
