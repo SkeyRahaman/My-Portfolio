@@ -14,96 +14,144 @@
 	{% block style %}
 	{% endblock style %}
 </head>
-<body style="background: linear-gradient(to right,#f9dbe5,white,#62c8ee)">
+<body style="background: linear-gradient(to right,#f9dbe5,white,#62c8ee);background-repeat: no-repeat;">
+	<style type="text/css">
+		.heading_name{
+			font-size: 50px;
+			font-weight: bold;
+		}
+		@media (max-width:700px){
+			.heading_name{
+			font-size: 30px;
+		}
+		}
+	</style>
+
 	<img id="cover_photo" src="{{url_for('static' , filename = 'images/cover_1.jpg')}}" style="top: 0; z-index: 0;	height: 75%;	width: 100%;	z-index: -1;	position: absolute; opacity: .8; overflow: auto;" >
-	<div>
+	
 
 
-		<nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color" style="z-index: 10">
-		    <a class="navbar-brand " href="/"><h1>MD SHAKIB MONDAL</h1></a>
-		    <button class="navbar-toggler collapsed bg-secondary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
-		        <span class="navbar-toggler-icon" ></span>
-		    </button>
 
-		    <div class="navbar-collapse collapse" id="navbarSupportedContent-4" style="">
-		        <ul class="navbar-nav ml-auto">
-		          	<li class="nav-item active">
-		            	<a class="nav-link waves-effect waves-light" href="/">
-		              		<i class="fas fa-envelope"></i>
-		              		Home
-		              		<span class="sr-only">(current)</span>
-
-		            	</a>
-		          	</li>
-		          	<li class="nav-item active">
-		            	<a class="nav-link waves-effect waves-light" href="/about">
-		              		<i class="fas fa-gear"></i>
-		              		About
-		              	</a>
-		          	</li>
-		          	<li class="nav-item active">
-		            	<a class="nav-link waves-effect waves-light" href="/resume">
-		              		<i class="fas fa-gear"></i>
-		              		Resume
-		              	</a>
-		          	</li>
-		          	<li class="nav-item active">
-		            	<a class="nav-link waves-effect waves-light" href="/projects">
-		              		<i class="fas fa-gear"></i>
-		              		Projects
-		              	</a>
-		          	</li>
-		          	<li class="nav-item active">
-		            	<a class="nav-link waves-effect waves-light" href="/blog">
-		              		<i class="fas fa-gear"></i>
-		              		Blogs
-		              	</a>
-		          	</li>
-		          	<li class="nav-item dropdown active">
-		            	<a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		                	<i class="fas fa-user"></i>
-		                	Games
-		                </a>
-		            	<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-		              		<a class="dropdown-item waves-effect waves-light" href="/unknown_message">Send Me Anonymous Message</a><!-- 
-		              		<a class="dropdown-item waves-effect waves-light" href="/tic_tac_toe">Tic Tac Toe</a> -->
-		            	</div>
-		          	</li>
-		        </ul>
-		    </div>
-		</nav>
-
+	<nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color" style="z-index: 10">
+	    
+	    	<a class="navbar-brand heading_name" onclick="location.reload()"><u>
+				{% if title %}
+					{{title}}
+				{% else %}
+					MD SHAKIB MONDAL
+				{% endif %}
+	    	</u></a>
 		
+	    
+
+	    <button class="navbar-toggler collapsed bg-secondary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon" ></span>
+	    </button>
+
+	    <div class="navbar-collapse collapse" id="navbarSupportedContent-4" style="">
+	        <ul class="navbar-nav ml-auto">
+	          	<li class="nav-item active">
+	            	<a class="nav-link waves-effect waves-light" href="/">
+	              		<i class="fas fa-envelope"></i>
+	              		Home
+	            	</a>
+	          	</li>
+	          	<li class="nav-item active">
+	            	<a class="nav-link waves-effect waves-light" href="/about">
+	              		<i class="fas fa-gear"></i>
+	              		About
+	              	</a>
+	          	</li>
+	          	<li class="nav-item active">
+	            	<a class="nav-link waves-effect waves-light" href="/resume">
+	              		<i class="fas fa-gear"></i>
+	              		Resume
+	              	</a>
+	          	</li>
+	          	<li class="nav-item active">
+	            	<a class="nav-link waves-effect waves-light" href="/projects">
+	              		<i class="fas fa-gear"></i>
+	              		Projects
+	              	</a>
+	          	</li>
+	          	<li class="nav-item active">
+	            	<a class="nav-link waves-effect waves-light" href="/blog">
+	              		<i class="fas fa-gear"></i>
+	              		Blogs
+	              	</a>
+	          	</li>
+	          	<li class="nav-item dropdown active">
+	            	<a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	                	<i class="fas fa-user"></i>
+	                	Games
+	                </a>
+	            	<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+	              		<a class="dropdown-item waves-effect waves-light" href="/unknown_message">Send Me Anonymous Message</a>
+	              		<a class="dropdown-item waves-effect waves-light" href="/sudoku">Play SUDOKU</a>
+	              		<a class="dropdown-item waves-effect waves-light" href="/sudoku/solve_manual">Solve Your Pending Suduku</a>
+
+	              		<!-- 
+	              		<a class="dropdown-item waves-effect waves-light" href="/tic_tac_toe">Tic Tac Toe</a> -->
+	            	</div>
+	          	</li>
+	        </ul>
+	    </div>
+	</nav>
+
+	
+
+	{% with messages = get_flashed_messages(with_categories = true ) %}
+		{% if messages %}
+			{% for category, message in messages %}
+				<div class="alert alert-{{ category }} row col-10 mx-5 mt-2 justify-content-between" id="message_box">
+					<div>
+						{{ message}}
+					</div>
+					<button class="btn btn-outline-danger btn-sm mx-3 align-right" onclick="hide_message()">Hide</button>
+				</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}	
+	
+	{% block content %}
+	{% endblock content %}
 
 
-		
-		{% block content %}
-		{% endblock content %}
-		<!-- Footer -->
-		<footer id="footer" class="page-footer font-small bg-danger text-white mt-3" style="bottom: 0;width: 100%;">
 
-		  <!-- Copyright -->
-		  <div class="footer-copyright text-center py-3">
-		  	This website is developed and maintained by MD SHAKIB MONDAL.
-		  </div>
-		  <!-- Copyright -->
+	<!-- Footer -->
+	<footer id="footer" class="page-footer font-small bg-danger text-white mt-3" style="bottom: 0;width: 100%;">
 
-		</footer>
-		<!-- Footer -->
-		{% block script %}
-		{% endblock script %}
-		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-		<script type="text/javascript">
-			if (window.screen.height <= document.body.clientHeight){
-			    document.getElementById("footer").style.position = "relative";
-			} else {
-			    document.getElementById("footer").style.position = "fixed";
-			}
-		</script>
+	  <!-- Copyright -->
+	  <div class="footer-copyright text-center py-3 font-small">
+	  	This website is developed and maintained by MD SHAKIB MONDAL.
+	  </div>
+	  <!-- Copyright -->
 
-		<!-- <script src="{{url_for('static' , filename='bootstrap/js/bootstrap.min.js')}}"></script> -->
-		</div>
+	</footer>
+	<!-- Footer -->
+
+
+
+	<script type="text/javascript">
+		function hide_message(){
+			document.getElementById("message_box").style.display = 'none';
+		}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	
+
+
+
+	<script type="text/javascript">
+		if (window.screen.height <= document.body.clientHeight){
+		    document.getElementById("footer").style.position = "relative";
+		} else {
+		    document.getElementById("footer").style.position = "fixed";
+		}
+	</script>
+	{% block script %}
+	{% endblock script %}
 </body>
 </html>

@@ -17,6 +17,23 @@ def calculate_exp(st_month, st_year, en_month, en_year=datetime.now().year):
 
 
 experience = [
+{
+        "icon": "static/images/accenture.png",
+        "title": "Application Development Associate",
+        "employment_type": "Full Time",
+        "company": "Accenture",
+        "location": "kolkata",
+        "start_date": {
+            "month": "aug",
+            "year": 2021,
+        },
+        "end_date": {
+            "month": "ongoing",
+            "year": 0
+        },
+        "exp": calculate_exp(st_month="aug", st_year=2021, en_month="ongoing"),
+        "description": "SAP BASIS Consultant and Automation Engineer"
+    },
     {
         "icon": "static/images/mywbut.jpg",
         "title": "Technical Content Strategist",
@@ -28,12 +45,13 @@ experience = [
             "year": 2019,
         },
         "end_date": {
-            "month": "ongoing",
-            "year": 0
+            "month": "jan",
+            "year": 2020
         },
-        "exp": calculate_exp(st_month="jul", st_year=2019, en_month="ongoing", en_year=2020),
+        "exp": calculate_exp(st_month="jul", st_year=2019, en_month="jan", en_year=2020),
         "description": ""
     },
+
     {
         "icon": "static/images/roc.jpg",
         "title": "Club Literacy Committee Chair",
@@ -45,10 +63,10 @@ experience = [
             "year": 2019,
         },
         "end_date": {
-            "month": "ongoing",
-            "year": 0
+            "month": "aug",
+            "year": 2020
         },
-        "exp": calculate_exp(st_month="jul", st_year=2019, en_month="ongoing", en_year=2020),
+        "exp": calculate_exp(st_month="sep", st_year=2019, en_month="aug", en_year=2020),
         "description": "I am a part of this club. We do various kind of social works like blood donation camp, Clothes distribution for the poor people, Tree plantation program etc under the name of this club."
     }
 ]

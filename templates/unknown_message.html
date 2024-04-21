@@ -2,20 +2,32 @@
 
 
 {% block content %}
+<style type="text/css">
+	.con_main{
+		max-width: 70%;
+	}
+@media (max-width:700px){
+	.con_main{
+		max-width: 90%;
+	}
+}
+</style>
 
-<div class="card mx-auto p-3" style="max-width: 75%">
+
+
+<div class="card p-3 con_main m-auto mb-5 pb-5">
 	<div class="">
 		Hay!
 	</div>
 	<br>
 	<div >
 		<form>
-			<div class="form-group">
+			<div class="form-group mb-4">
 					<label for="message"><strong class="lead">Type Your Message Here:-</strong></label>
 					<br>
 					<textarea class="form-control" rows="10" name="message"  placeholder="Under 250 charecter." id="message_input"></textarea>
 					<br>
-					<button type="button" class="btn btn-success" id="send_button" onclick="send_text_message()">Send</button>
+					<button type="button" class="btn btn-success mb-3" id="send_button" onclick="send_text_message()">Send</button>
 				</div>
 		</form>
 	</div>
@@ -42,7 +54,7 @@
 						document.getElementById('message_input').value = ""
 					}
 					else{
-						alert("There is a error in this process! Please try after some thime!.");
+						alert("There is a error in this process! Please try after some time!.");
 					}
 				})
 			})

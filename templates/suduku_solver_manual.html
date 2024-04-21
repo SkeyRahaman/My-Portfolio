@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<div class="card-body justify-content-center col-lg-5 col-sm-12 col-md-8">
+	<form method="POST" action="">
+		{% for i in range(3) %}
+			<div class="row" >
+				{% for j in range(3) %}
+					<div class="col-4 border">
+						{% for s in range(3*i,3*i+3) %}
+							<div class="row">
+								{% for e in range(3*j,3*j+3) %}
+
+
+									{% if nums[s][e] == 0 %}
+										{% if result[s][e] == 0 %}
+											<div class="col-4 card p-0" type="input">
+												<input name="cell{{s}}{{e}}" type="text" onchange='check_number("cell{{s}}{{e}}")' style="text-align:center;">
+												<input type="checkbox" name="cell{{s}}{{e}}check" value="0" style="display:none">
+											</div>
+										{% else %}
+											<div class="col-4 card p-0" type="input">
+												<input name="cell{{s}}{{e}}" type="text" value="{{result[s][e]}}" onchange='check_number("cell{{s}}{{e}}")' style="text-align:center;">
+												<input type="checkbox" name="cell{{s}}{{e}}check" value="0" style="display:none">
+											</div>
+										{% endif %}
+									{% else %}
+										<div class="col-4 card p-0" type="input">
+										    <input class="text-danger" name="cell{{s}}{{e}}" type="text" inputmode="numeric" value="{{nums[s][e]}}" onchange='check_number("cell{{s}}{{e}}")' style="pointer-events:none;text-align:center;">
+										    <input type="checkbox" name="cell{{s}}{{e}}check" value="0" style="display:none" checked="checked">
+										</div>
+									{% endif %}
+
+
+
+
+
+								{% endfor %}
+							</div>
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+    <div class="row pb-5 mb-3">
+			<button name="generate_sol" type="submit" class="btn btn-success m-2" value="gen_sol">Generate Solution</button>
+			<a href="/sudoku">
+				<button name="generate_question" type="button" class="btn btn-primary m-2 disabled">Play a new SUDOKU</button>
+			</a>
+			<button name="clear_all" type="button" class="btn btn-success m-2" onclick="clear_the_board()">Clear All</button>
+		</div>
+	</form>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript">
+function clear_the_board(){
+	for (let i = 0; i < 9; i++) {
+		for (let j = 0; j < 9; j++) {
+			// console.log(document.getElementsByName("cell" + i.toString() + j.toString())[0].value)
+			
+			cell = document.getElementsByName("cell" + i.toString() + j.toString())[0];
+			if(!cell.disabled){
+				cell.value = "";
+			}
+			
+		}
+	}
+}
+function check_number(name){
+	let num = document.getElementsByName(name)[0].value;
+	if(isNaN(num)){
+		document.getElementsByName(name)[0].value = "";
+		alert("Please enter a number between 1 to 9");
+	} else {
+		if((num<1 || num>9) && num !== ""){
+			document.getElementsByName(name)[0].value = "";
+			alert("Please enter a number between 1 to 9");
+		}
+	}
+}
+</script>
+
+
+{% endblock script %}

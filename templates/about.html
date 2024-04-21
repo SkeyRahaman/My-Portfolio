@@ -1,169 +1,178 @@
 {% extends 'layout.html' %}
 
-{% block style %}
-<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename='css/about.css')}}">
-{% endblock style %}
-
-
 {% block content %}
+<style type="text/css">
+	.group_heading{
+		font-size: 50px;
+	}
+	.about_image_div{
+		max-width: 450px;
+	}
+	.edu_step{
+		font-size: 40px;
+	}
+	.exp_img{
+		max-width: 300px;
+	}
+@media (max-width:700px){
+	.group_heading{
+		font-size: 30px;
+	}
+	.edu_step{
+		font-size: 20px;
+	}
+}
+</style>
 
 
 
-<div class="mx-2">
-	<div class="card section bg-light m-2">
-		<div class="card-body" style="z-index: 1;position: relative;">
-			<div class="block_heading text-center text-uppercase display-4">
-				About Me
-			</div><br>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-5 col-sm-12 about_image_div text-center m-auto">
-						<img class="about_image img-thumbnail img-fluid m-auto" src="{{url_for('static' , filename = 'images/dp2.jpg')}}"/>
-					</div>
-					<div class="col-md-7 col-sm-12">
-						<div class='card p-2 bg-pink'>
-							<div>
-								<p><h4>Hay hi!</h4></p> 
-							</div>
-							<div class="lead">
-							     I am a 20-year-old Computer Science Engineering student from Government College of Engineering and Leather Technology graduating in the year 2021. With all the elementary subjects in engineering, I have a great interest in Machine Learning And Data Science. And looking forward to have a carrier in this Sector.
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+<div class="card section bg-light m-2">
+	<div class="card-body" style="z-index: 1;position: relative;">
+		<div class="text-center text-uppercase group_heading">
+			<b>About Me</b>
 		</div>
-	</div>
-
-
-	<div class="card section m-2 bg-light">
-		<div class="card-body" style="z-index: 1;position: relative;">
-			<div class="block_heading text-center text-uppercase display-4">
-				Education
-			</div><br>
-			<div class="container-fluid">
-				<div class="row">
-
-					<div class="col-md-5 col-sm-12 about_image_div text-center">
-						<img class="about_image img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp3.jpg')}}"/>
-					</div>
-
-					<div class="card m-2 p-2 col-md-6 col-sm-12">
-						<div class="text-uppercase text-center">
-							<p><h4>primary and secoundary school</h4></p>
-						</div>
-						<div class="lead">
-							The journey of my education starts with a small school in Begri(Howrah) named St. Don English Medium School. It was 2002 when I joined this school in the class nursery. I was at this school for 6 years. It was 2008 when I joined MNM Memorial High School in Midnapore, But this school came in my life for a very small period of time, because just after 2 years when I completed standard 5 in 2010 I was again transferred to Guru Nanak Public School. This is the school where I completed my 10th in the year 2015. It is a CBSE school. I Secured a CGPA of 9.2 in 10th examination.
-						</div>
-					</div>
-				</div>
-				<div class="row">
-
-					<div class="card m-2 p-2 col-md-6 col-sm-12">
-						<div class="text-uppercase text-center">
-							<p><h4>High School</h4></p>
-						</div>
-						<div class="lead">
-							My High school is the same as my secondary school, it is Guru Nanak Public School only. As mentioned above it is a CBSE school and of course, I am a science student. Although having Interested in Engineering I took biology as my additional subject. I got a result of 83.2% in 10+2.
-						</div>
-					</div>
-
-					<div class="col-md-5 col-sm-12 text-center">
-						<img class="about_image img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp4.jpg')}}"/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-5 col-sm-12 text-center m-auto">
-						<img class="about_image img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp5.jpg')}}"/>
-					</div>
-					
-					<div class="card m-2  p-2 col-md-5 col-sm-12 ">
-						<div class="text-uppercase text-center">
-							<p><h4>College Life</h4></p>
-						</div>
-						<div class="lead">
-							Well, I was fortunate enough to sit in an examination called WBJEE. and secured a rank of 7400(approx for the last two-digits). So after the E-Counselling process, I got admission in Government College of Engineering and Leather Technology(GCELT) with Computer Science Stream. And presently studying in this institution.
-						</div>
-					</div>
-				</div>
-
+		<div class="row">
+			<div class="col-md-5 col-sm-12 about_image_div m-auto">
+				<img class="img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp2.jpg')}}"/>
 			</div>
-		</div>
-	</div>
-
-	<div class="card section m-2">
-		<div class="card-body bg-light">
-			<div class="block_heading text-center text-uppercase display-4">
-				Work Experience
-			</div><br>
-			{% for exp in experience %}
-			<div class="card p-3 my-2 container-fluid">
-				<div class="row">
-					<div class="col-2  text-cente mx-auto my-2">
-						<img class="img-thumbnail img-fluid" src="{{exp['icon']}}" style="object-fit: contain;" />
-					</div>
-					<div class="col-9">
-						<div>
-							<h3>{{exp['title']}}</h3>
-						</div>
-
-						<div>
-							<h5>{{exp['company']}} | <small>{{exp['employment_type']}}</small></h5>		
-						</div>
-
-						<div>
-							<h6>{{exp['start_date']['month']}} {{exp['start_date']['year']}}  – 
-								{% if exp['end_date']['month'] == "ongoing" %}
-									Present
-								{% else %}
-									{{exp['end_date']['month']}} {{exp['end_date']['year']}}
-								{% endif %} 
-
-								<small>Employment Duration:-{{exp['exp']['month']}} month, {{exp['exp']['year']}} years</small></h6>
-							<p>{{exp['location']}}</p>
-						</div>
-
-						<div class="lead">
-							<p>{{exp['description']}}</p>
-						</div>
-					</div>
+			<div class="col-md-7 col-sm-12 m-auto card p-2">
+				<div>
+					<p><h4>Hay hi!</h4></p> 
 				</div>
-			</div>
-			{% endfor %}
-			
-		</div>
-	</div>
-
-	<div class="card section m-2">
-		<div class="card-body bg-light">
-			<div class="block_heading text-center text-uppercase display-4">
-				Bloging
-			</div>
-			<div class="container-fluid">
-				<div class="row">
-				{% for blog in blogs %}
-				<div class="col-md-6 col-sm-12 m-auto">
-					<div class="card p-3 m-3">
-						<div class="img-thumbnail img-fluid">
-							<img src="{{blog[1]}}" style="width: 100%;height: 200px;"/>
-						</div>
-						<h3>{{blog[0]}}</h3>
-						<div><p>
-							{% for i in blog[2].split("<br>") %}
-								 <br> {{i}}
-							{% endfor %}
-							.....<a href="{{blog[3]}}">Read more</a></p>
-						</div>
-					</div>
+				<div class="lead">
+				     I am a 20-year-old Computer Science Engineering student from Government College of Engineering and Leather Technology graduating in the year 2021. With all the elementary subjects in engineering, I have a great interest in Machine Learning And Data Science. And looking forward to have a carrier in this Sector.
 				</div>
-				{% endfor %}
-
-			</div>
-				
 			</div>
 		</div>
 	</div>
 </div>
+
+<div class="card section m-2 bg-light">
+	<div class="card-body" style="z-index: 1;position: relative;">
+		<div class="text-center text-uppercase group_heading">
+			<b>Education</b>
+		</div>
+
+		<div class="row">
+			<div class="col-md-5 col-sm-12 about_image_div m-auto">
+				<img class="about_image img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp3.jpg')}}"/>
+			</div>
+
+			<div class="col-md-7 col-sm-12 m-auto card p-2">
+				<div class="text-uppercase text-center edu_step">
+					<p><u>primary and secoundary school</u></p>
+				</div>
+				<div class="lead">
+					The journey of my education starts with a small school in Begri(Howrah) named St. Don English Medium School. It was 2002 when I joined this school in the class nursery. I was at this school for 6 years. It was 2008 when I joined MNM Memorial High School in Midnapore, But this school came in my life for a very small period of time, because just after 2 years when I completed standard 5 in 2010 I was again transferred to Guru Nanak Public School. This is the school where I completed my 10th in the year 2015. It is a CBSE school. I Secured a <a href="{{url_for('static' , filename='images/result_12.jpg')}}"> CGPA of 9.2</a> in 10th examination.
+				</div>
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="col-md-7 col-sm-12 m-auto card p-2">
+				<div class="text-uppercase text-center edu_step">
+					<p><u>High School</u></p>
+				</div>
+				<div class="lead">
+					My High school is the same as my secondary school, it is Guru Nanak Public School only. As mentioned above it is a CBSE school and of course, I am a science student. Although having Interested in Engineering I took biology as my additional subject. I got a result of <a href="{{url_for('static' , filename='pdf/result_12.pdf')}}"> 83.2% in 10+2.</a>
+				</div>
+			</div>
+
+			<div class="col-md-5 col-sm-12 about_image_div m-auto">
+				<img class="about_image img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp4.jpg')}}"/>
+			</div>
+
+		</div>
+		<div class="row">
+
+			<div class="col-md-5 col-sm-12 about_image_div m-auto">
+				<img class="about_image img-thumbnail img-fluid" src="{{url_for('static' , filename = 'images/dp5.jpg')}}"/>
+			</div>
+			
+			<div class="col-md-7 col-sm-12 m-auto card p-2">
+				<div class="text-uppercase text-center edu_step">
+					<p><u>College Life</u></p>
+				</div>
+				<div class="lead">
+					Well, I was fortunate enough to sit in an examination called WBJEE. and secured a rank of 7400(approx for the last two-digits). So after the E-Counselling process, I got admission in Government College of Engineering and Leather Technology(GCELT) with Computer Science Stream. And presently studying in this institution.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="card section m-2">
+	<div class="card-body bg-light">
+		<div class="text-center text-uppercase group_heading">
+			<b>Work Experience</b>
+		</div><br>
+		{% for exp in experience %}
+			<div class="row">
+				<div class="col-4 mx-auto exp_img">
+					<img class="img-thumbnail img-fluid" src="{{exp['icon']}}" />
+				</div>
+				<div class="col-8">
+					<div>
+						<h3>{{exp['title']}}</h3>
+					</div>
+
+					<div>
+						<h5>{{exp['company']}} | <small>{{exp['employment_type']}}</small></h5>		
+					</div>
+
+					<div>
+						<h6>{{exp['start_date']['month']}} {{exp['start_date']['year']}}  – 
+							{% if exp['end_date']['month'] == "ongoing" %}
+								Present
+							{% else %}
+								{{exp['end_date']['month']}} {{exp['end_date']['year']}}
+							{% endif %} 
+
+							<small>Employment Duration:-{{exp['exp']['month']}} month, {{exp['exp']['year']}} years</small></h6>
+						<p>{{exp['location']}}</p>
+					</div>
+
+					<div class="lead">
+						<p>{{exp['description']}}</p>
+					</div>
+				</div>
+			</div>
+			<hr>
+		{% endfor %}
+		
+	</div>
+</div>
+
+<div class="card section m-2">
+	<div class="card-body bg-light">
+		<div class="text-center text-uppercase group_heading">
+			<b>Bloging</b>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				{% for blog in blogs %}
+					<div class="col-md-6 col-sm-12 m-auto card">
+						<div>
+							<img class="img-thumbnail img-fluid" src="{{blog[1]}}"/>
+						</div>
+						<div class="m-2 lead">
+							<h3>{{blog[0]}}</h3>
+							<div>
+								<p>
+									{% for i in blog[2].split("<br>") %}
+										 <br> {{i}}
+									{% endfor %}
+									.....<a href="{{blog[3]}}">Read more</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
 
 
 {% endblock content %}
