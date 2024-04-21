@@ -17,7 +17,7 @@ def calculate_exp(st_month, st_year, en_month, en_year=datetime.now().year):
 
 
 experience = [
-{
+    {
         "icon": "static/images/accenture.png",
         "title": "Application Development Associate",
         "employment_type": "Full Time",

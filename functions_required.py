@@ -6,8 +6,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from string import Template
-from static.data import credential
 import random
+import config
 
 
 def generate_question_grid():
@@ -53,13 +53,13 @@ def send_mail(message):
     server.ehlo()
     server.starttls()
     try:
-        server.login(user=credential.email_user, password=credential.email_password)
+        server.login(user=config.EMAIL_ADDRESS, password=config.EMAIL_PASSWORD)
         login = True
     except Exception as e:
         print(e)
     if login:
         msg = MIMEMultipart()
-        msg['From'] = credential.email_user
+        msg['From'] = config.EMAIL_ADDRESS
         msg['To'] = to
         msg['subject'] = "Message From An Unknown Person Through Your Portfolio.!"
         message = read_template("templates/message.html").substitute(message=message, time=datetime.now().time(),

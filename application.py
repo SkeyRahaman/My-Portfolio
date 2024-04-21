@@ -1,9 +1,12 @@
 from flask import Flask, render_template, redirect, jsonify, request, flash
+
+import config
 from functions_required import *
 from static.data import data
+import config
 
 app = application = Flask(__name__)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+app.secret_key = config.SECRET_KEY
 
 
 @app.route("/")
@@ -161,4 +164,4 @@ def suduku():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=config.DEBUG)
