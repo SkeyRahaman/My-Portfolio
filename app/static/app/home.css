@@ -32,6 +32,10 @@
     height: 150px;
 }
 
+.lead-about{
+    text-align: justify;
+}
+
 /* Portfolio Section */
 .portfolio .card {
     transition: transform 0.3s ease;
