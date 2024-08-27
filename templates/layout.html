@@ -11,8 +11,10 @@
 	{% endif %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static "app/home.css" %}">
-    {% block style %}
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
     <style>
+        {% block style %}
+        {% endblock style %}
         /* Global Styles */
         body {
             font-family: 'Arial', sans-serif;
@@ -28,7 +30,6 @@
             margin: 0 10px;
         }
     </style>
-	{% endblock style %}
 </head>
 <body>
     <!-- Header -->
