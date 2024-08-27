@@ -1,5 +1,5 @@
 venv/
-.github/
-__pycache__/
-.idea/
-config.py
+**pycache**
+/static/
+db.sqlite3
+/uploads/

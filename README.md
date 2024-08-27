@@ -1,81 +1,107 @@
-# [Flask Web Application](http://sakibmondal7.pythonanywhere.com/)
+# Django Portfolio Website
 
-This repository contains a Flask web application that serves as a portfolio and provides various features including a Sudoku solver, a Tic-Tac-Toe game, and a feature to send anonymous messages to you.
+This is a portfolio website built with Django. It showcases various projects, work experience, LinkedIn recommendations, and includes a contact form.
 
 ## Table of Contents
 
 - [Features](#features)
-- [Getting Started](#getting-started)
+- [Installation](#installation)
 - [Usage](#usage)
-- [Routes](#routes)
-- [Configuration](#configuration)
+- [Models](#models)
+- [Forms](#forms)
+- [Helpers](#helpers)
 - [License](#license)
 
 ## Features
 
-- Home, About, and Resume pages
-- Blog section
-- Projects section
-- Tic-Tac-Toe game
-- Sudoku solver with manual and automatic solving options
-- **Send anonymous messages** to you using the `/send_message/<message>` route
+- **Home Page**: Displays a hero section with an image, an about section, and a list of projects.
+- **Work Experience**: Lists work experiences grouped by company.
+- **LinkedIn Recommendations**: Displays recommendations in a carousel.
+- **Contact Form**: Allows users to send messages via a form.
 
-## Getting Started
+## Installation
 
-To get started with the project, follow the instructions below:
-
-1. **Clone the repository:**
-
-    ```bash
-    git clone <repository-url>
-    ```
-
-2. **Navigate to the project directory:**
-
-    ```bash
-    cd <project-directory>
-    ```
-
-3. **Create a virtual environment (optional but recommended):**
-
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+2. **Create a Virtual Environment:**
     ```bash
     python -m venv venv
-    source venv/bin/activate
-    ```
-
-4. **Install the required dependencies:**
-
+    venv\Scripts\activate
+3. **Install Dependencies:**
     ```bash
     pip install -r requirements.txt
-    ```
-
-5. **Configure the application:** Create a `config.py` file in the project root directory and set the necessary configurations such as `SECRET_KEY` and other variables.
-
-6. **Run the application:**
-
+4. **Apply Migrations::**
     ```bash
-    python app.py
-    ```
+    python manage.py migrate
+5. **Collect Static Files (if needed):**
+    ```bash
+    python manage.py collectstatic
+5. **Run the Development Server:**
+    ```bash
+    python manage.py runserver
+5. **Access the Application:**
+    Open your browser and navigate to http://127.0.0.1:8000/.
+
 
 ## Usage
 
-After running the application, you can access the different routes and features provided by the web application in your browser.
+### Adding Data
 
-## Routes
+1. **Use the Django Admin Interface**:
+   - Navigate to the Django admin interface at `http://127.0.0.1:8000/admin/`.
+   - Log in with your admin credentials.
+   - Add data to the following models:
+     - `WebsiteData`
+     - `Media`
+     - `WorkExperience`
+     - `LinkedInRecommendation`
+   - Ensure to upload media files (images, PDFs) in the appropriate locations.
 
-The application provides the following routes:
+2. **Verify Data**:
+   - Check that the data appears correctly on the home page and other relevant sections.
 
-- `/`: Home page.
-- `/about`: About page with blogs and experience information.
-- `/resume`: Resume page.
-- `/projects`: Projects page.
-- `/blog`: Blog page displaying all blogs.
-- `/send_message/<message>`: Route that allows visitors to send anonymous messages to you. The route accepts a `message` parameter in the URL, which is the message the visitor wants to send. The message is then processed by the application.
-- `/tic_tac_toe`: Play Tic-Tac-Toe game.
-- `/sudoku/solve_manual`: Sudoku solver with manual input.
-- `/sudoku`: Sudoku solver with automatic solving.
+### Customizing Content
 
-## Configuration
+1. **Update Logic**:
+   - Modify the `views.py` file to update the logic for fetching and processing data.
+   - Adjust how data is retrieved and passed to the templates.
 
-The application requires some configuration settings. Create a `config.py` file in the root directory with refrence from sample_config.py
+2. **Modify Template**:
+   - Edit the `home.html` template to customize the layout and appearance.
+   - Change HTML and CSS as needed to reflect your desired design.
+
+3. **Test Changes**:
+   - Restart the development server using `python manage.py runserver`.
+   - Refresh your browser to see the changes.
+
+## Features
+
+- **Home Page**: Displays a hero section with an image, an about section, and a list of projects.
+- **Work Experience**: Lists work experiences grouped by company.
+- **LinkedIn Recommendations**: Displays recommendations in a carousel.
+- **Contact Form**: Allows users to send messages via a form.
+
+## Models
+
+- **WebsiteData**: Stores general information such as about text.
+- **Media**: Manages media files like images and resumes.
+- **WorkExperience**: Contains information about work experience.
+- **LinkedInRecommendation**: Holds LinkedIn recommendations from various individuals.
+- **Profile**: Represents user profiles (if applicable).
+
+## Forms
+
+- **MessageForm**: Handles the contact form submission.
+
+## Helpers
+
+- **get_projects()**: A helper function to fetch and return project data.
+- **get_urls()**: A helper function to get additional URLs or data.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details
+
 

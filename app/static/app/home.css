@@ -1,0 +1,94 @@
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+    font-size: 1.25rem;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+
+/* About Section */
+#about img {
+    width: 150px;
+    height: 150px;
+}
+
+/* Portfolio Section */
+.portfolio .card {
+    transition: transform 0.3s ease;
+}
+
+.portfolio .card:hover {
+    transform: scale(1.05);
+}
+
+/* Testimonials Section */
+#testimonials .carousel-item {
+    padding: 20px;
+}
+
+/* Contact Section */
+.contact form .form-control {
+    margin-bottom: 15px;
+}
+
+
+/* Work Experience Section */
+#experience {
+    background-color: #f8f9fa;
+}
+
+#experience h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+#experience .card {
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#experience .card-body {
+    padding: 1.5rem;
+}
+
+#experience .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+#experience .card-subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+#experience ul {
+    padding-left: 1.5rem;
+    list-style-type: disc;
+}
+
+#experience ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
