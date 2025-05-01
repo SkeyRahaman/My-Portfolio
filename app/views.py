@@ -14,12 +14,15 @@ def home(request):
             email = message_form.cleaned_data['email']
             subject = message_form.cleaned_data['subject']
             body = message_form.cleaned_data['body']
-            send_mail(
-                name=name,
-                email=email,
-                subject=subject,
-                body=body
-            )
+            try:
+                send_mail(
+                    name=name,
+                    email=email,
+                    subject=subject,
+                    body=body
+                )
+            except Exception as e:
+                pass
             message_form.save()
             message_form = MessageForm()
             alert_message = {'color' : 'success' , 'message' : 'Your Message is Successfully Delevered.'}
