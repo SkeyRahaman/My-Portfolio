@@ -1,6 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 from .models import Profile, Media
+from config import Config
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from string import Template
+from datetime import datetime, date, timedelta
 
 def get_project_live_url(github_project_url):
     """
@@ -21,7 +27,6 @@ def get_project_live_url(github_project_url):
             return a_tag['href']
     
     return ""
-
 
 def get_projects():
     """
@@ -73,3 +78,43 @@ def get_urls():
         'github' : github,
         'leetcode' : leetcode,
     }
+
+def read_template(filename):
+    with open(filename, 'r', encoding='utf-8') as template_file:
+        template_file_content = template_file.read()
+    return Template(template_file_content)
+
+def send_mail(name,email,subject,body):
+    print(body)
+    # return False
+    login = False
+    server = smtplib.SMTP(Config.SMTP_ENDPOINT)
+    server.ehlo()
+    server.starttls()
+    print(Config.FROM_EMAIL, Config.FROM_EMAIL_PASSWORD)
+    try:
+        server.login(user=Config.FROM_EMAIL, password=Config.FROM_EMAIL_PASSWORD)
+        login = True
+    except Exception as e:
+        print(e)
+    if login:
+        msg = MIMEMultipart()
+        msg['From'] = Config.FROM_EMAIL
+        msg['To'] = Config.TO_EMAIL
+        msg['subject'] = "Message From An Unknown Person Through Your Portfolio.!"
+        message = read_template("templates/message.html").substitute(
+            name=name,
+            email=email,
+            subject=subject,
+            body=body,
+            time=datetime.now().strftime("%H:%M:%S"),
+            date=datetime.now().strftime("%Y-%m-%d")
+        )
+        msg.attach(MIMEText(message, 'html'))
+        server.send_message(msg)
+        del msg
+    if login:
+        server.quit()
+        return True
+    else:
+        return False

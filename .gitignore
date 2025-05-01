@@ -3,3 +3,4 @@ venv/
 /static/
 db.sqlite3
 /uploads/
+config.py
