@@ -42,7 +42,7 @@
                         <h5 class="card-title">{{ name }}</h5>
                         <p class="card-text">{{ item.description }}</p>
                         {% if item.project_url %}
-                        <a href="{{item.project_url}}">
+                        <a href="{{item.project_url}}" name="project_live_url_from_github">
                             <button class="btn btn-danger">Live Demo</button>
                         </a>
                         {% endif %}
