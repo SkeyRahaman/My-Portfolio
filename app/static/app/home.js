@@ -10,7 +10,6 @@ function wakeUpApplications() {
         if (anchor && anchor.href) {
             const url = anchor.href;
             
-            // Method 1: Using fetch (modern approach)
             fetch(url, {
                 mode: 'no-cors',
                 cache: 'no-store'
