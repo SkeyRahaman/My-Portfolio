@@ -21,10 +21,10 @@
 
 <!-- About Section -->
 <section id="about" class="py-5">
-    <div class="container text-center">
+    <div class="container">
         <img src="{{hero_image}}" class="rounded-circle mb-4" alt="John Doe">
         <h2>About Me</h2>
-        <p class="lead lead-about">{{about}}</p>
+        <div class="lead lead-about">{{ about | safe }}</div>
         <a href="{{resume_url}}" class="btn btn-outline-secondary">Download Resume</a>
     </div>
 </section>
