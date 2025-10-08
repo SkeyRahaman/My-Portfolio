@@ -1,4 +1,6 @@
 from django.shortcuts import render
+import markdown
+
 from .models import WebsiteData, Media, WorkExperience, LinkedInRecommendation, Profile
 from .helpers import *
 from .forms import MessageForm
@@ -29,6 +31,7 @@ def home(request):
 
     about = WebsiteData.objects.filter(tag='about_text_home_page')
     about = about[0].data if len(about) >= 1 else "No About in database"
+    about = markdown.markdown(about, extensions=['fenced_code', 'codehilite'])
 
     hero_image = Media.objects.filter(tag='hero_image_home_page')
     hero_image = hero_image[0].media_file.url if len(hero_image) >= 1 else None
