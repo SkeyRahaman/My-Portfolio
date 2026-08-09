@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { certifications } from '../data';
-import './Certifications.css';
+import { certifications, education } from '../data';
+import './Credentials.css';
 
 const spring = { type: 'spring', bounce: 0, duration: 0.6 };
 
@@ -15,14 +15,12 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: spring },
 };
 
-export default function Certifications() {
+export default function Credentials() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
-  if (!certifications || certifications.length === 0) return null;
-
   return (
-    <section className="certifications section" id="certifications">
+    <section className="certifications section" id="credentials">
       <div className="container" ref={ref}>
         <motion.div
           className="section-header"
@@ -30,8 +28,8 @@ export default function Certifications() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={spring}
         >
-          <span className="section-label">Certifications</span>
-          <h2 className="section-title">Verified credentials</h2>
+          <span className="section-label">Credentials</span>
+          <h2 className="section-title">Verified credentials & Academic background</h2>
         </motion.div>
 
         <motion.div
@@ -40,7 +38,8 @@ export default function Certifications() {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
         >
-          {certifications.map((cert) => (
+          {/* CERTIFICATIONS */}
+          {certifications && certifications.map((cert) => (
             <motion.div
               key={cert.title}
               className="certification-card"
@@ -72,6 +71,33 @@ export default function Certifications() {
               </div>
             </motion.div>
           ))}
+
+          {/* EDUCATION */}
+          {education && (
+            <motion.div
+              className="education-card"
+              variants={cardVariants}
+              whileHover={{ y: -2, transition: { type: 'spring', bounce: 0, duration: 0.3 } }}
+            >
+              <div className="education-icon">🎓</div>
+              <div className="education-info">
+                <h3>{education.university}</h3>
+                <p className="education-degree">{education.degree}</p>
+                <div className="education-meta">
+                  <span>
+                    <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    {education.period}
+                  </span>
+                  <span className="education-gpa">DGPA: {education.gpa}</span>
+                </div>
+              </div>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>
