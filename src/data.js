@@ -3,6 +3,8 @@
 // Update this file to change all portfolio content.
 // ============================================================
 
+import profilePhoto from './assets/IMG_20250422_092237_639.webp';
+
 export const personalInfo = {
   name: "Md Shakib Mondal",
   firstName: "Md Shakib",
@@ -12,7 +14,7 @@ export const personalInfo = {
   location: "Kolkata, India",
   email: "sakibmondal7@gmail.com",
   phone: "+91-8240618068",
-  photo: "/IMG_20250422_092237_639.webp",
+  photo: profilePhoto,
   links: {
     linkedin: "https://www.linkedin.com/in/shakib-mondal/",
     github: "https://github.com/SkeyRahaman",
