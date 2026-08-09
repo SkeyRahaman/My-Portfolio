@@ -30,14 +30,23 @@ export default function Projects() {
 
   // Combine manual projects with the fetched GitHub projects
   const allProjects = useMemo(() => {
-    const dynamicProjects = fetchedProjects.map((repo, idx) => ({
-      name: repo.name.replace(/-/g, ' '),
-      description: repo.description || 'An open-source repository.',
-      tech: repo.language ? [repo.language] : ['Various'],
-      icon: '💻', // Default icon for GitHub repos
-      gradient: `gradient-${(idx % 6) + 1}`, // Cycle through available gradients (1-6)
-      github: repo.html_url
-    }));
+    const dynamicProjects = fetchedProjects.map((repo, idx) => {
+      const allTech = new Set();
+      if (repo.language) allTech.add(repo.language);
+      if (repo.topics && Array.isArray(repo.topics)) {
+        repo.topics.forEach(t => allTech.add(t));
+      }
+      const techArray = Array.from(allTech).slice(0, 5); // limit to 5 tags so it doesn't overflow
+
+      return {
+        name: repo.name.replace(/-/g, ' '),
+        description: repo.description || 'An open-source repository.',
+        tech: techArray.length > 0 ? techArray : ['Various'],
+        icon: '💻', // Default icon for GitHub repos
+        gradient: `gradient-${(idx % 6) + 1}`, // Cycle through available gradients (1-6)
+        github: repo.html_url
+      };
+    });
 
     return [...manualProjects, ...dynamicProjects];
   }, [fetchedProjects]);
