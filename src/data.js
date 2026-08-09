@@ -25,10 +25,10 @@ export const personalInfo = {
 
 export const about = {
   paragraphs: [
-    "I am a Python Backend Engineer who thrives on untangling complex problems and architecting scalable, automated solutions. For me, software engineering isn't just about writing code — it's about making systems faster, teams more efficient, and workflows seamless.",
-    "Throughout my career, I've specialized in taking raw data and manual processes and transforming them into streamlined, robust systems — significantly boosting overall efficiency and reducing manual effort. Beyond enterprise work, I'm deeply passionate about algorithmic problem-solving and full-stack development.",
+    "I am a Backend Software Engineer with a deep focus on distributed systems and microservice architecture. My expertise lies in designing resilient infrastructure, managing asynchronous workflows, and tuning system performance to deliver seamless experiences.",
+    "From resolving critical security vulnerabilities to re-architecting monolithic services into high-throughput APIs, I take pride in engineering the robust foundation that products rely on. I also bridge the gap between traditional backend systems and artificial intelligence, building autonomous AI agents and integrating language models to automate complex workflows. I don't just solve tickets; I engineer long-term solutions."
   ],
-  quote: "I don't have bugs, I just have undocumented random features.",
+  quote: "An engineer by choice, driven by a lifelong curiosity to understand how things work and the passion to build them better.",
   stats: [
     { id: "experience", value: 43, suffix: "", label: "Experience" },
     { id: "leetcode", value: 3.23, suffix: "%", label: "LeetCode Top Global" },
