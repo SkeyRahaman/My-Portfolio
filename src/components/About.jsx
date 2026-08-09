@@ -11,9 +11,10 @@ function getMonthsSince(startDateStr) {
 }
 
 function formatExperience(months) {
-  if (months <= 0) return '1 mo';
-  const y = Math.floor(months / 12);
-  const m = months % 12;
+  const roundedMonths = Math.floor(months);
+  if (roundedMonths <= 0) return '1 mo';
+  const y = Math.floor(roundedMonths / 12);
+  const m = roundedMonths % 12;
   let res = [];
   if (y > 0) res.push(`${y} yr${y > 1 ? 's' : ''}`);
   if (m > 0) res.push(`${m} mo${m > 1 ? 's' : ''}`);

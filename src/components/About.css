@@ -50,7 +50,8 @@
 }
 
 .stat-number {
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  white-space: nowrap;
   font-weight: 800;
   /* §15 Typography: tight tracking on large text */
   letter-spacing: -0.03em;
