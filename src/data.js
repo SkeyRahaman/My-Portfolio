@@ -125,7 +125,7 @@ export const manualProjects = [
 export const githubProjectNames = [
   "Polling-Website",
   "Users-Module",
-  "Url-Shortener-UI",
+  "URL_Shortner",
   "kharchakhata",
   "Blogit"
 ];
