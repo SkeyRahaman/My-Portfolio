@@ -13,14 +13,16 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Projects />
-      <Credentials />
-      <Achievements />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Achievements />
+        <Credentials />
+        <Contact />
+      </main>
       <Footer />
     </>
   );

@@ -1,7 +1,14 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { experience } from '../data';
+import sapLogo from '../assets/sap-logo.svg';
+import appleLogo from '../assets/apple-logo.svg';
 import './Experience.css';
+
+const logoMap = {
+  'SAP': sapLogo,
+  'Apple': appleLogo
+};
 
 /* §4: critically damped spring — graceful, no bounce for static UI */
 const spring = { type: 'spring', bounce: 0, duration: 0.6 };
@@ -69,10 +76,14 @@ export default function Experience() {
                       {job.period} {job.startDate && `· ${computeDuration(job.startDate, job.endDate)}`}
                     </span>
                     <span className="timeline-account">
-                      <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M20 7h-3a2 2 0 01-2-2V2" />
-                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
-                      </svg>
+                      {logoMap[job.account] ? (
+                        <img src={logoMap[job.account]} alt={job.account} className={`account-logo logo-${job.account.toLowerCase()}`} />
+                      ) : (
+                        <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path d="M20 7h-3a2 2 0 01-2-2V2" />
+                          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
+                        </svg>
+                      )}
                       {job.account}
                     </span>
                   </div>

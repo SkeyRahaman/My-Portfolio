@@ -1,7 +1,6 @@
-import { useRef, useMemo } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { manualProjects, githubProjectNames } from '../data';
-import { useGithubProjects } from '../hooks/useGithubProjects';
+import { projects } from '../data';
 import './Projects.css';
 
 const spring = { type: 'spring', bounce: 0, duration: 0.5 };
@@ -26,31 +25,6 @@ export default function Projects() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
-  const { projects: fetchedProjects, loading } = useGithubProjects('SkeyRahaman', githubProjectNames);
-
-  // Combine manual projects with the fetched GitHub projects
-  const allProjects = useMemo(() => {
-    const dynamicProjects = fetchedProjects.map((repo, idx) => {
-      const allTech = new Set();
-      if (repo.language) allTech.add(repo.language);
-      if (repo.topics && Array.isArray(repo.topics)) {
-        repo.topics.forEach(t => allTech.add(t));
-      }
-      const techArray = Array.from(allTech).slice(0, 5); // limit to 5 tags so it doesn't overflow
-
-      return {
-        name: repo.name.replace(/-/g, ' '),
-        description: repo.description || 'An open-source repository.',
-        tech: techArray.length > 0 ? techArray : ['Various'],
-        icon: '💻', // Default icon for GitHub repos
-        gradient: `gradient-${(idx % 6) + 1}`, // Cycle through available gradients (1-6)
-        github: repo.html_url
-      };
-    });
-
-    return [...manualProjects, ...dynamicProjects];
-  }, [fetchedProjects]);
-
   return (
     <section className="projects section" id="projects">
       <div className="container" ref={ref}>
@@ -74,34 +48,33 @@ export default function Projects() {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
         >
-          {loading ? (
-            <div style={{ color: 'var(--text-tertiary)' }}>Loading live repositories...</div>
-          ) : (
-            allProjects.map((proj) => (
-              <motion.div
-                key={proj.name}
-                className="project-card"
-                variants={cardVariants}
-                whileHover={{ y: -4, transition: { type: 'spring', bounce: 0, duration: 0.3 } }}
-              >
-                <div className={`project-hero ${proj.gradient}`}>
-                  <div className="project-icon">{proj.icon}</div>
+          {projects.map((proj) => (
+            <motion.div
+              key={proj.name}
+              className="project-card"
+              variants={cardVariants}
+              whileHover={{ y: -4, transition: { type: 'spring', bounce: 0, duration: 0.3 } }}
+            >
+              <div className="project-hero">
+                {proj.image && (
+                  <img src={proj.image} alt={proj.name} />
+                )}
+                <div className="project-icon">{proj.icon}</div>
+              </div>
+              <div className="project-body">
+                <h3 className="project-name">{proj.name}</h3>
+                <p className="project-desc">{proj.description}</p>
+                <div className="project-tech">
+                  {proj.tech.map((t) => (
+                    <span key={t} className="project-tech-tag">{t}</span>
+                  ))}
                 </div>
-                <div className="project-body">
-                  <h3 className="project-name">{proj.name}</h3>
-                  <p className="project-desc">{proj.description}</p>
-                  <div className="project-tech">
-                    {proj.tech.map((t) => (
-                      <span key={t} className="project-tech-tag">{t}</span>
-                    ))}
-                  </div>
-                  <a href={proj.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                    <GithubIcon /> Source Code
-                  </a>
-                </div>
-              </motion.div>
-            ))
-          )}
+                <a href={proj.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                  <GithubIcon /> Source Code
+                </a>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

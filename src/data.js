@@ -5,6 +5,14 @@
 
 import profilePhoto from './assets/IMG_20250422_092237_639.webp';
 
+// Project Images
+import imgAiExtraction from './assets/projects/ai-extraction-pipeline.png';
+import imgPolling from './assets/projects/polling-website.png';
+import imgUsersModule from './assets/projects/users-module.png';
+import imgUrlShortner from './assets/projects/url-shortner.png';
+import imgKharchaKhata from './assets/projects/kharchakhata.png';
+import imgBlogit from './assets/projects/blogit.png';
+
 export const personalInfo = {
   name: "Md Shakib Mondal",
   firstName: "Md Shakib",
@@ -30,7 +38,7 @@ export const about = {
   ],
   quote: "An engineer by choice, driven by a lifelong curiosity to understand how things work and the passion to build them better.",
   stats: [
-    { id: "experience", value: 43, suffix: "", label: "Experience" },
+    { id: "experience", value: 43, suffix: "", label: "Experience" }, // Will be dynamically overridden by dateUtils
     { id: "leetcode", value: 3.23, suffix: "%", label: "LeetCode Top Global" },
     { id: "github", value: 26, suffix: "", label: "GitHub Repositories" },
     { id: "throughput", value: 40, suffix: "%", label: "Throughput Boost" },
@@ -111,23 +119,55 @@ export const experience = [
   },
 ];
 
-export const manualProjects = [
+export const projects = [
   {
     name: "Multi-Agent AI Extraction Pipeline",
     description: "Distributed multi-agent architecture using Google ADK & LangGraph with MCP and Agent-to-Agent protocol. Hybrid RAG engine (FAISS + BM25) and enterprise-grade AI guardrails.",
     tech: ["Google ADK", "LangGraph", "FAISS", "Azure OpenAI", "Langfuse"],
     icon: "🤖",
-    gradient: "gradient-2",
+    image: imgAiExtraction,
     github: "https://github.com/SkeyRahaman",
+  },
+  {
+    name: "Polling-Website",
+    description: "Microservice polling system using a Kafka-driven, event-based pipeline to record votes asynchronously and shield the request path from spikes.",
+    tech: ["Django REST", "FastAPI", "Kafka", "PostgreSQL"],
+    icon: "🗳️",
+    image: imgPolling,
+    github: "https://github.com/SkeyRahaman/Polling-Website",
+  },
+  {
+    name: "Users-Module",
+    description: "Plug-and-play user authentication & authorization microservice stack featuring JWT, OAuth2, and Role-Based Access Control (RBAC).",
+    tech: ["FastAPI", "PostgreSQL", "Docker", "JWT", "RBAC"],
+    icon: "🛡️",
+    image: imgUsersModule,
+    github: "https://github.com/SkeyRahaman/Users-Module",
+  },
+  {
+    name: "URL_Shortner",
+    description: "Fast, secure URL shortening web service featuring customizable URLs and built-in API authentication.",
+    tech: ["FastAPI", "Python", "SQL", "CRUD"],
+    icon: "🔗",
+    image: imgUrlShortner,
+    github: "https://github.com/SkeyRahaman/URL_Shortner",
+  },
+  {
+    name: "kharchakhata",
+    description: "Expense Manager App with dynamic data visualizations, cloud storage, and secure OAuth login.",
+    tech: ["Python", "Flask", "PostgreSQL", "S3", "OAuth"],
+    icon: "💰",
+    image: imgKharchaKhata,
+    github: "https://github.com/SkeyRahaman/kharchakhata",
+  },
+  {
+    name: "Blogit",
+    description: "Full-featured blogging platform with bookmarks, likes, user subscriptions, and complete CRUD operations.",
+    tech: ["Django", "SQLite", "CSS"],
+    icon: "📝",
+    image: imgBlogit,
+    github: "https://github.com/SkeyRahaman/Blogit",
   }
-];
-
-export const githubProjectNames = [
-  "Polling-Website",
-  "Users-Module",
-  "URL_Shortner",
-  "kharchakhata",
-  "Blogit"
 ];
 
 export const achievements = [
@@ -140,7 +180,7 @@ export const achievements = [
       { value: 1502, suffix: "+", label: "Problems Solved" },
       { value: 1960, suffix: "+", label: "Contest Rating" },
     ],
-    description: "Consistently ranked in the top 2% of competitive programmers globally, demonstrating strong algorithmic problem-solving skills.",
+    description: "Consistently ranked in the top 3.23% of competitive programmers globally, demonstrating strong algorithmic problem-solving skills.",
     link: "https://leetcode.com/sakibmondal7/",
   },
   {

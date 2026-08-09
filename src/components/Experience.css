@@ -111,6 +111,16 @@
   letter-spacing: 0.05em;
 }
 
+.account-logo {
+  height: 12px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-apple {
+  filter: invert(1);
+}
+
 .timeline-achievements {
   display: flex;
   flex-direction: column;

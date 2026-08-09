@@ -1,23 +1,7 @@
 import { motion } from 'framer-motion';
 import { personalInfo, achievements } from '../data';
-import { useLeetCodeStats } from '../hooks/useLeetCodeStats';
+import { getMonthsSince, formatExperienceShort } from '../utils/dateUtils';
 import './Hero.css';
-
-function getMonthsSince(startDateStr) {
-  const start = new Date(startDateStr);
-  const end = new Date();
-  return (end.getFullYear() - start.getFullYear()) * 12 - start.getMonth() + end.getMonth();
-}
-
-function formatExperienceShort(months) {
-  if (months <= 0) return '1 mo';
-  const y = Math.floor(months / 12);
-  const m = months % 12;
-  let res = [];
-  if (y > 0) res.push(`${y} yr${y > 1 ? 's' : ''}`);
-  if (m > 0) res.push(`${m} mo${m > 1 ? 's' : ''}`);
-  return res.join(' ');
-}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -42,9 +26,10 @@ const floatVariants = {
 
 export default function Hero() {
   const leetcodeData = achievements.find(a => a.platform === 'LeetCode');
-  const fallbackStats = leetcodeData ? leetcodeData.stats : [];
-  const username = leetcodeData?.link?.split('/').filter(Boolean).pop();
-  const { stats: leetcodeStats } = useLeetCodeStats(username, fallbackStats);
+  const leetcodeStats = leetcodeData ? leetcodeData.stats : [];
+  const topGlobalStat = leetcodeStats.find(s => s.label === 'Top Global');
+  const problemsSolvedStat = leetcodeStats.find(s => s.label === 'Problems Solved');
+
   const totalExperienceMonths = getMonthsSince('2021-08-01');
 
   return (
@@ -121,11 +106,12 @@ export default function Hero() {
               src={personalInfo.photo}
               alt={`${personalInfo.name} — Backend Software Engineer`}
               className="hero-photo"
+              loading="lazy"
             />
             {[
-              { value: `${leetcodeStats[1]?.value || 1502}+`, label: 'LeetCode Problems' },
+              { value: `${problemsSolvedStat?.value || 1000}+`, label: 'LeetCode Problems' },
               { value: formatExperienceShort(totalExperienceMonths), label: 'Experience' },
-              { value: `Top ${leetcodeStats[0]?.value || 3.23}%`, label: 'Global Ranking' },
+              { value: `Top ${topGlobalStat?.value || 2}%`, label: 'Global Ranking' },
             ].map((card, i) => (
               <motion.div
                 key={card.label}
