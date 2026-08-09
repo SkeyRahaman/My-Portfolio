@@ -111,15 +111,7 @@ export const experience = [
   },
 ];
 
-export const projects = [
-  {
-    name: "Distributed Polling Microservices",
-    description: "Django REST polling microservice backed by PostgreSQL with Kafka-driven event streams, centralized FastAPI auth with JWT/RBAC, and 30+ REST endpoints via API Gateway.",
-    tech: ["Django REST", "FastAPI", "PostgreSQL", "Kafka", "Docker"],
-    icon: "🔄",
-    gradient: "gradient-1",
-    github: "https://github.com/SkeyRahaman",
-  },
+export const manualProjects = [
   {
     name: "Multi-Agent AI Extraction Pipeline",
     description: "Distributed multi-agent architecture using Google ADK & LangGraph with MCP and Agent-to-Agent protocol. Hybrid RAG engine (FAISS + BM25) and enterprise-grade AI guardrails.",
@@ -127,39 +119,15 @@ export const projects = [
     icon: "🤖",
     gradient: "gradient-2",
     github: "https://github.com/SkeyRahaman",
-  },
-  {
-    name: "Users-Module",
-    description: "Plug-and-play user authentication & authorization microservice stack with JWT, OAuth2, and Role-Based Access Control (RBAC), built with FastAPI and PostgreSQL.",
-    tech: ["FastAPI", "PostgreSQL", "JWT", "OAuth2", "RBAC"],
-    icon: "🔐",
-    gradient: "gradient-3",
-    github: "https://github.com/SkeyRahaman",
-  },
-  {
-    name: "URL Shortener & UI",
-    description: "Fast, secure URL shortening web service with customizable URLs and built-in API authentication. Modern React + Vite frontend backed by FastAPI and SQL.",
-    tech: ["FastAPI", "React", "Vite", "SQL"],
-    icon: "🔗",
-    gradient: "gradient-4",
-    github: "https://github.com/SkeyRahaman",
-  },
-  {
-    name: "kharchakhata",
-    description: "Full-stack expense manager with Python Flask, PostgreSQL for data management, Amazon S3 for scalable storage, Google OAuth, and dynamic data visualizations.",
-    tech: ["Flask", "PostgreSQL", "AWS S3", "Google OAuth"],
-    icon: "💰",
-    gradient: "gradient-5",
-    github: "https://github.com/SkeyRahaman",
-  },
-  {
-    name: "Blogit",
-    description: "Interactive blog management system built with Django, featuring responsive UI, dynamic search, comments, bookmarks, likes, tag/author filtering, and data visualizations.",
-    tech: ["Django", "Python", "PostgreSQL"],
-    icon: "✍️",
-    gradient: "gradient-6",
-    github: "https://github.com/SkeyRahaman",
-  },
+  }
+];
+
+export const githubProjectNames = [
+  "Polling-Website",
+  "Users-Module",
+  "Url-Shortener-UI",
+  "kharchakhata",
+  "Blogit"
 ];
 
 export const achievements = [
