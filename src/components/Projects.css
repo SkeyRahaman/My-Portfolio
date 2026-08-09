@@ -1,0 +1,117 @@
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  /* CSS transitions for non-gesture hover; Framer Motion handles the y-lift */
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-glow-hover);
+}
+
+.project-hero {
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Unique gradients — intentional abstract art, not placeholder images */
+.project-hero.gradient-1 { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%); }
+.project-hero.gradient-2 { background: linear-gradient(135deg, #1a0a2e 0%, #2d1b69 40%, #11998e 100%); }
+.project-hero.gradient-3 { background: linear-gradient(135deg, #0a192f 0%, #172a45 40%, #1e3a5f 100%); }
+.project-hero.gradient-4 { background: linear-gradient(135deg, #1a0a14 0%, #2d1b36 40%, #44318d 100%); }
+.project-hero.gradient-5 { background: linear-gradient(135deg, #0a1a0a 0%, #1b2d1b 40%, #2d6a4f 100%); }
+.project-hero.gradient-6 { background: linear-gradient(135deg, #1a140a 0%, #2d2a1b 40%, #6a4c2d 100%); }
+
+.project-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.project-icon {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.25rem;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  /* §12 Materials: translucent icon badge with depth */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-body { padding: 1.5rem; }
+
+.project-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.project-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-tech-tag {
+  padding: 0.2rem 0.55rem;
+  background: var(--bg-glass-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-accent);
+  transition: color 0.15s ease;
+}
+
+.project-link:hover { color: var(--accent-cyan); }
+.project-link svg { width: 14px; height: 14px; }
+
+@media (max-width: 768px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}
