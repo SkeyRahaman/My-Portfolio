@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 4rem;
-  align-items: start;
+  align-items: center;
 }
 
 .about-text p {
@@ -10,17 +10,6 @@
   color: var(--text-secondary);
   line-height: 1.75;
   margin-bottom: 1.25rem;
-}
-
-.about-quote {
-  margin-top: 2rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--bg-glass);
-  border-left: 3px solid var(--accent-violet);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  font-style: italic;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
 }
 
 .about-stats {

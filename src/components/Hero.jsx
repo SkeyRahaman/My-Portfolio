@@ -59,6 +59,16 @@ export default function Hero() {
             {personalInfo.title}
           </motion.p>
 
+          <motion.blockquote
+            className="hero-quote"
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={2.5}
+          >
+            "An engineer by choice, driven by a lifelong curiosity to understand how things work and the passion to build them better."
+          </motion.blockquote>
+
           <motion.p
             className="hero-description"
             variants={fadeUp}

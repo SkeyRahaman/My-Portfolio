@@ -49,7 +49,6 @@ export default function About() {
             {about.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-            <div className="about-quote">"{about.quote}"</div>
           </motion.div>
         </div>
 
