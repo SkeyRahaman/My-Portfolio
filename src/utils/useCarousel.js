@@ -137,7 +137,8 @@ export function useCarousel({ itemCount, trackRef }) {
     if (!isActive) return;
     if (e.pointerType === 'mouse' && e.button !== 0) return;
 
-    e.currentTarget.setPointerCapture(e.pointerId);
+    // Remove unconditional setPointerCapture here so the browser can still detect scroll
+    // e.currentTarget.setPointerCapture(e.pointerId);
 
     // §3 — stop any running spring
     if (animControls.current) animControls.current.stop();
@@ -147,13 +148,28 @@ export function useCarousel({ itemCount, trackRef }) {
 
     state.current = {
       dragging:     true,
+      isScrolling:  false,
       startX:       e.clientX,
+      startY:       e.clientY,
       startMotionX: x.get(),   // §3 — read live on-screen value
     };
   }, [isActive, x]);
 
   const onPointerMove = useCallback((e) => {
-    if (!state.current.dragging) return;
+    if (!state.current.dragging || state.current.isScrolling) return;
+
+    // Intent detection (give a 5px threshold to decide if they are scrolling up/down or left/right)
+    const dx = Math.abs(e.clientX - state.current.startX);
+    const dy = Math.abs(e.clientY - state.current.startY);
+
+    if (dx < 5 && dy < 5) return; // Wait for clear movement
+
+    if (dy > dx && dx < 10) {
+      // It's a vertical scroll! Abort dragging.
+      state.current.isScrolling = true;
+      state.current.dragging = false;
+      return;
+    }
 
     const el = trackRef.current;
     if (!el) return;
@@ -178,7 +194,11 @@ export function useCarousel({ itemCount, trackRef }) {
   }, [itemCount, trackRef, x]);
 
   const onPointerUp = useCallback(() => {
-    if (!state.current.dragging) return;
+    if (!state.current.dragging || state.current.isScrolling) {
+      state.current.dragging = false;
+      state.current.isScrolling = false;
+      return;
+    }
     state.current.dragging = false;
 
     const el = trackRef.current;
@@ -193,23 +213,34 @@ export function useCarousel({ itemCount, trackRef }) {
     const projectedIndex = Math.round(-projectedX / step);
 
     // ── Clamp to ±1 card per swipe ──────────────────────────────────
-    // Prevents fast flicks from jumping over cards.
     const current     = currentIndexRef.current;
     const targetIndex = Math.max(current - 1, Math.min(current + 1, projectedIndex));
 
     snapTo(targetIndex, velocity);
   }, [snapTo, trackRef, x]);
 
+  const onPointerCancel = useCallback(() => {
+    // Browser took over (e.g. for native vertical scroll)
+    state.current.dragging = false;
+    state.current.isScrolling = false;
+    snapTo(currentIndexRef.current, 0); // snap back to current
+  }, [snapTo]);
+
   useEffect(() => {
     const move = (e) => onPointerMove(e);
     const up   = (e) => onPointerUp(e);
+    const cancel = (e) => onPointerCancel(e);
+    
     window.addEventListener('pointermove', move);
     window.addEventListener('pointerup',   up);
+    window.addEventListener('pointercancel', cancel);
+    
     return () => {
       window.removeEventListener('pointermove', move);
       window.removeEventListener('pointerup',   up);
+      window.removeEventListener('pointercancel', cancel);
     };
-  }, [onPointerMove, onPointerUp]);
+  }, [onPointerMove, onPointerUp, onPointerCancel]);
 
   // Re-snap on resize so the track stays aligned
   useEffect(() => {

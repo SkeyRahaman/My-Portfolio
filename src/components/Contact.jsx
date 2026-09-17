@@ -79,7 +79,7 @@ export default function Contact() {
           <h2 className="contact-title">Let's build something together</h2>
           <p className="contact-subtitle">
             I'm always open to discussing backend architecture, exploring new
-            algorithmic challenges, or taking on high-impact engineering problems.
+            algorithmic challenges, or taking on high-impact engineering problems or a high paying opportunity.
           </p>
         </motion.div>
 

@@ -37,6 +37,7 @@
     will-change: transform;
     user-select: none;
     -webkit-user-select: none;
+    touch-action: pan-y; /* Crucial: allows native vertical scrolling, hands horizontal off to JS */
   }
 
   /* ── Slide: layout slot, holds one card ── */
