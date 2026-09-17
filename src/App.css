@@ -34,7 +34,7 @@
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
 
-  --section-padding: clamp(4rem, 10vh, 8rem);
+  --section-padding: clamp(2rem, 5.2vh, 4rem);
   --container-max: 1200px;
   --container-padding: clamp(1.25rem, 4vw, 3rem);
 
@@ -184,5 +184,12 @@ img { max-width: 100%; display: block; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Mobile Scale Reduction --- */
+@media (max-width: 768px) {
+  html {
+    font-size: 90%;
   }
 }

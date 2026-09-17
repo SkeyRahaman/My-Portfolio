@@ -179,13 +179,15 @@
   .hero .container {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 3rem;
+    gap: 2rem;
   }
-  .hero-content { max-width: 600px; margin: 0 auto; }
+  .hero-content { max-width: 600px; margin: 0 auto; order: 2; }
   .hero-description { max-width: 100%; margin-left: auto; margin-right: auto; }
   .hero-cta { justify-content: center; }
   .hero-visual {
-    margin-top: 1rem;
+    order: 1;
+    margin-top: 0;
+    margin-bottom: -1rem;
     transform: scale(0.85);
   }
 }
