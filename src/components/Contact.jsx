@@ -110,7 +110,7 @@ export default function Contact() {
             <motion.a
               key={card.id}
               href={card.href}
-              className="contact-card"
+              className={`contact-card contact-${card.iconClass}`}
               id={`contact-${card.id}`}
               target={card.external ? '_blank' : undefined}
               rel={card.external ? 'noopener noreferrer' : undefined}

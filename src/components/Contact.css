@@ -37,16 +37,30 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 1.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
+  background: 
+    radial-gradient(circle at 100% 0%, rgba(var(--cat-color, 255, 255, 255), 0.12) 0%, transparent 65%),
+    rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.04),
+    0 8px 32px rgba(0, 0, 0, 0.4), 
+    0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
   text-align: left;
 }
 
 .contact-card:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-hover);
+  background: 
+    radial-gradient(circle at 100% 0%, rgba(var(--cat-color, 255, 255, 255), 0.18) 0%, transparent 75%),
+    rgba(28, 28, 28, 0.7);
+  border-color: rgba(var(--cat-color, 255, 255, 255), 0.25);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    0 12px 48px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(var(--cat-color, 255, 255, 255), 0.15);
 }
 
 /* §1 Response: feedback on press */
@@ -54,6 +68,13 @@
   transform: scale(0.98);
   transition: transform 100ms ease-out;
 }
+
+/* ── Category Color Variables ── */
+.contact-email    { --cat-color: 124, 58, 237; } /* violet */
+.contact-phone    { --cat-color: 16, 185, 129; } /* green */
+.contact-linkedin { --cat-color: 59, 130, 246; } /* blue */
+.contact-github   { --cat-color: 200, 200, 200; } /* white/gray */
+.contact-resume   { --cat-color: 6, 182, 212; } /* cyan */
 
 .contact-card-icon {
   width: 40px;
@@ -63,13 +84,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  /* Dynamic color inheritance */
+  background: rgba(var(--cat-color, 255, 255, 255), 0.15);
+  color: rgb(var(--cat-color, 255, 255, 255));
+  box-shadow: 0 4px 12px rgba(var(--cat-color, 255, 255, 255), 0.2);
 }
-
-.contact-card-icon.email    { background: rgba(124, 58, 237, 0.12); color: var(--accent-violet); }
-.contact-card-icon.phone    { background: rgba(16, 185, 129, 0.12); color: var(--accent-green); }
-.contact-card-icon.linkedin { background: rgba(59, 130, 246, 0.12); color: var(--accent-blue); }
-.contact-card-icon.github   { background: rgba(255, 255, 255, 0.08); color: var(--text-primary); }
-.contact-card-icon.resume   { background: rgba(6, 182, 212, 0.12); color: var(--accent-cyan); }
 
 .contact-card-label {
   font-size: 0.7rem;
