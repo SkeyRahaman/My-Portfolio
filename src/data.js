@@ -3,7 +3,7 @@
 // Update this file to change all portfolio content.
 // ============================================================
 
-import profilePhoto from './assets/IMG_20250422_092237_639.webp';
+import profilePhoto from './assets/shakib-profile.webp';
 
 // Project Images
 import imgAiExtraction from './assets/projects/ai-extraction-pipeline.png';

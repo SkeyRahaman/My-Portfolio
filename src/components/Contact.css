@@ -69,6 +69,7 @@
 .contact-card-icon.phone    { background: rgba(16, 185, 129, 0.12); color: var(--accent-green); }
 .contact-card-icon.linkedin { background: rgba(59, 130, 246, 0.12); color: var(--accent-blue); }
 .contact-card-icon.github   { background: rgba(255, 255, 255, 0.08); color: var(--text-primary); }
+.contact-card-icon.resume   { background: rgba(6, 182, 212, 0.12); color: var(--accent-cyan); }
 
 .contact-card-label {
   font-size: 0.7rem;

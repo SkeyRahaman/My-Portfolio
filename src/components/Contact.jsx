@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { personalInfo } from '../data';
+import resumePdf from '../assets/Md_Shakib_Mondal_CV.pdf';
 import './Contact.css';
 
 const spring = { type: 'spring', bounce: 0, duration: 0.6 };
@@ -57,6 +58,22 @@ const contactCards = [
       </svg>
     ),
   },
+  {
+    id: 'resume',
+    label: 'Resume',
+    value: 'Download CV',
+    href: resumePdf,
+    iconClass: 'resume',
+    external: false,
+    download: 'Md_Shakib_Mondal_CV.pdf',
+    icon: (
+      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="7 10 12 15 17 10" />
+        <line x1="12" y1="15" x2="12" y2="3" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Contact() {
@@ -97,6 +114,7 @@ export default function Contact() {
               id={`contact-${card.id}`}
               target={card.external ? '_blank' : undefined}
               rel={card.external ? 'noopener noreferrer' : undefined}
+              download={card.download}
               /* §3 Interruptible hover spring */
               whileHover={{ y: -2, transition: { type: 'spring', bounce: 0, duration: 0.3 } }}
             >
@@ -111,20 +129,6 @@ export default function Contact() {
           ))}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ ...spring, delay: 0.3 }}
-          style={{ marginTop: '1rem' }}
-        >
-          <a href={`mailto:${personalInfo.email}`} className="btn btn-primary" id="contact-cta">
-            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-            Send me an email
-          </a>
-        </motion.div>
       </div>
     </section>
   );
