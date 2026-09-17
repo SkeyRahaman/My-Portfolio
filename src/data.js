@@ -6,12 +6,12 @@
 import profilePhoto from './assets/shakib-profile.webp';
 
 // Project Images
-import imgAiExtraction from './assets/projects/ai-extraction-pipeline.png';
-import imgPolling from './assets/projects/polling-website.png';
-import imgUsersModule from './assets/projects/users-module.png';
-import imgUrlShortner from './assets/projects/url-shortner.png';
-import imgKharchaKhata from './assets/projects/kharchakhata.png';
-import imgBlogit from './assets/projects/blogit.png';
+import imgAiExtraction from './assets/projects/ai-extraction-pipeline.jpg';
+import imgPolling from './assets/projects/polling-website.jpg';
+import imgUsersModule from './assets/projects/users-module.jpg';
+import imgUrlShortner from './assets/projects/url-shortner.jpg';
+import imgKharchaKhata from './assets/projects/kharchakhata.jpg';
+import imgBlogit from './assets/projects/blogit.jpg';
 
 export const personalInfo = {
   name: "Md Shakib Mondal",
