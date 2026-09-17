@@ -26,8 +26,20 @@ export default function App() {
 
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIndex = 0;
+    let keyBuffer = '';
 
     const handleKeyDown = (e) => {
+      // Sudo easter egg
+      if (e.key.length === 1) {
+        keyBuffer += e.key.toLowerCase();
+        if (keyBuffer.length > 10) keyBuffer = keyBuffer.slice(-10);
+        if (keyBuffer.endsWith('sudo')) {
+          alert("Nice try. You are not in the sudoers file.");
+          keyBuffer = '';
+        }
+      }
+
+      // Konami code easter egg
       if (e.key === konamiCode[konamiIndex]) {
         konamiIndex++;
         if (konamiIndex === konamiCode.length) {
@@ -41,6 +53,20 @@ export default function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    const originalTitle = document.title;
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = "Come back! 🥺";
+      } else {
+        document.title = originalTitle;
+      }
+    };
+    
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
 
   return (

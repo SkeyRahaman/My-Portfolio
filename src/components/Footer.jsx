@@ -7,10 +7,10 @@ export default function Footer() {
       <div className="container">
         <p className="footer-text">© 2026 {personalInfo.name}. Built with craft, care and Claude Code. (No &lt;div&gt;s were harmed in the making of this portfolio).</p>
         <div className="footer-links">
-          <a href={personalInfo.links.github} target="_blank" rel="noopener noreferrer" className="footer-link">
+          <a href={personalInfo.links.github} target="_blank" rel="noopener noreferrer" className="footer-link" title="45 repos, 3 finished">
             GitHub
           </a>
-          <a href={personalInfo.links.linkedin} target="_blank" rel="noopener noreferrer" className="footer-link">
+          <a href={personalInfo.links.linkedin} target="_blank" rel="noopener noreferrer" className="footer-link" title="Warning: mostly humble brags">
             LinkedIn
           </a>
           <a href={personalInfo.links.leetcode} target="_blank" rel="noopener noreferrer" className="footer-link">
