@@ -114,7 +114,7 @@ export default function Hero() {
             <div className="hero-photo-glow" />
             <img
               src={personalInfo.photo}
-              alt={`${personalInfo.name} — Backend Software Engineer`}
+              alt={`${personalInfo.name} - Backend Software Engineer`}
               className="hero-photo"
               loading="lazy"
             />
