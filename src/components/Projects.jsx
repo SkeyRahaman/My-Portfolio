@@ -1,6 +1,9 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { projects } from '../data';
+import { useCarousel } from '../utils/useCarousel';
+import { CarouselDots, ChevronLeft, ChevronRight } from './CarouselUI';
+import './Carousel.css';
 import './Projects.css';
 
 const spring = { type: 'spring', bounce: 0, duration: 0.5 };
@@ -21,13 +24,53 @@ const GithubIcon = () => (
   </svg>
 );
 
+/* ── Project card — shared between carousel and grid ────────────────── */
+function ProjectCard({ proj, isCarousel }) {
+  return (
+    <div className="project-card">
+      <div className="project-hero">
+        {proj.image && (
+          <img src={proj.image} alt={proj.name} draggable={false} />
+        )}
+        <div className="project-icon">{proj.icon}</div>
+      </div>
+      <div className="project-body">
+        <h3 className="project-name">{proj.name}</h3>
+        <p className="project-desc">{proj.description}</p>
+        <div className="project-tech">
+          {proj.tech.map((t) => (
+            <span key={t} className="project-tech-tag">{t}</span>
+          ))}
+        </div>
+        <a
+          href={proj.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-link"
+          {...(isCarousel ? { onPointerDown: (e) => e.stopPropagation() } : {})}
+        >
+          <GithubIcon /> Source Code
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/* ── Main component ─────────────────────────────────────────────────── */
 export default function Projects() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const sectionRef = useRef(null);
+  const trackRef   = useRef(null);
+  const inView     = useInView(sectionRef, { once: true, margin: '-80px' });
+
+  const { currentIndex, x, handlers, isActive, snapTo } = useCarousel({
+    itemCount: projects.length,
+    trackRef,
+  });
 
   return (
     <section className="projects section" id="projects">
-      <div className="container" ref={ref}>
+      <div className="container" ref={sectionRef}>
+        {/* Section header */}
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 24 }}
@@ -35,47 +78,85 @@ export default function Projects() {
           transition={spring}
         >
           <span className="section-label">Projects</span>
-          <h2 className="section-title">Things I've built</h2>
+          <h2 className="section-title">Things I&apos;ve built</h2>
           <p className="section-subtitle">
             Open-source projects and production-grade systems exploring distributed
             architecture, AI agents, and full-stack development.
           </p>
         </motion.div>
 
-        <motion.div
-          className="projects-grid"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
-          {projects.map((proj) => (
-            <motion.div
-              key={proj.name}
-              className="project-card"
-              variants={cardVariants}
-              whileHover={{ y: -4, transition: { type: 'spring', bounce: 0, duration: 0.3 } }}
-            >
-              <div className="project-hero">
-                {proj.image && (
-                  <img src={proj.image} alt={proj.name} />
-                )}
-                <div className="project-icon">{proj.icon}</div>
-              </div>
-              <div className="project-body">
-                <h3 className="project-name">{proj.name}</h3>
-                <p className="project-desc">{proj.description}</p>
-                <div className="project-tech">
-                  {proj.tech.map((t) => (
-                    <span key={t} className="project-tech-tag">{t}</span>
+        {/* ── Mobile carousel ── */}
+        {isActive ? (
+          <div className="carousel-viewport">
+            <div className="carousel-stage">
+              <div
+                className="carousel-track-clip"
+                style={{ touchAction: 'pan-y' }}
+              >
+                <motion.div
+                  ref={trackRef}
+                  className="carousel-track"
+                  style={{ x }}
+                  {...handlers}
+                  whileTap={{ cursor: 'grabbing' }}
+                  onDragStart={(e) => e.preventDefault()}
+                >
+                  {projects.map((proj) => (
+                    <div key={proj.name} className="carousel-slide">
+                      <ProjectCard proj={proj} isCarousel />
+                    </div>
                   ))}
-                </div>
-                <a href={proj.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                  <GithubIcon /> Source Code
-                </a>
+                </motion.div>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+
+              {currentIndex > 0 && (
+                <button
+                  className="carousel-arrow carousel-arrow--left"
+                  onClick={() => snapTo(currentIndex - 1, 0)}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  aria-label="Previous project"
+                >
+                  <ChevronLeft />
+                </button>
+              )}
+              {currentIndex < projects.length - 1 && (
+                <button
+                  className="carousel-arrow carousel-arrow--right"
+                  onClick={() => snapTo(currentIndex + 1, 0)}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  aria-label="Next project"
+                >
+                  <ChevronRight />
+                </button>
+              )}
+            </div>
+
+            <CarouselDots
+              count={projects.length}
+              current={currentIndex}
+              onDotPress={(i) => snapTo(i, 0)}
+            />
+          </div>
+        ) : (
+          /* ── Desktop grid (unchanged) ── */
+          <motion.div
+            className="projects-grid"
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? 'visible' : 'hidden'}
+          >
+            {projects.map((proj) => (
+              <motion.div
+                key={proj.name}
+                className="project-card-wrapper"
+                variants={cardVariants}
+                whileHover={{ y: -4, transition: { type: 'spring', bounce: 0, duration: 0.3 } }}
+              >
+                <ProjectCard proj={proj} />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );

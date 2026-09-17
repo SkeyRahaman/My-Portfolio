@@ -1,0 +1,119 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   SHARED MOBILE CAROUSEL STYLES
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Viewport: outer column wrapper ── */
+  .carousel-viewport {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  /* ── Stage: positioned parent for clip + arrow overlays ── */
+  .carousel-stage {
+    position: relative;
+    width: 100%;
+  }
+
+  /* ── Clip: hides the overflowing track ── */
+  .carousel-track-clip {
+    width: 100%;
+    overflow: hidden;
+    cursor: grab;
+  }
+
+  .carousel-track-clip:active {
+    cursor: grabbing;
+  }
+
+  /* ── Track: the sliding flex strip ── */
+  .carousel-track {
+    display: flex;
+    gap: 12px;
+    padding: 0; /* Flush left alignment within container */
+    will-change: transform;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* ── Slide: layout slot, holds one card ── */
+  .carousel-slide {
+    flex: 0 0 calc(100% - 32px); /* Fits container minus 32px for peek & gap */
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* ── Arrow buttons — Instagram-style translucent circles ── */
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px) saturate(150%);
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform 80ms ease-out, background 0.15s ease;
+  }
+
+  .carousel-arrow:active {
+    transform: translateY(-50%) scale(0.88);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .carousel-arrow--left {
+    left: 4px;
+  }
+
+  .carousel-arrow--right {
+    right: 4px;
+  }
+
+  /* ── Dot indicators — minimal page dots ── */
+  .carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 4px 0;
+  }
+
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: var(--radius-full);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.35);
+    transition: background 0.2s ease;
+  }
+
+  .carousel-dot--active {
+    background: var(--accent-violet);
+  }
+
+  /* ── §14 Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .carousel-track {
+      will-change: auto;
+      transition: none !important;
+    }
+    .carousel-dot {
+      transition: none !important;
+    }
+    .carousel-arrow {
+      transition: none !important;
+    }
+  }
+}

@@ -4,18 +4,42 @@
   gap: 1.5rem;
 }
 
+/* ── Category Color Variables ── */
+.skill-category.lang    { --cat-color: 124, 58, 237; } /* violet */
+.skill-category.backend { --cat-color: 59, 130, 246; } /* blue */
+.skill-category.db      { --cat-color: 16, 185, 129; } /* green */
+.skill-category.cloud   { --cat-color: 6, 182, 212; }  /* cyan */
+.skill-category.ai      { --cat-color: 236, 72, 153; } /* pink */
+.skill-category.auto    { --cat-color: 245, 158, 11; } /* amber */
+
+/* ── Premium Glassmorphism Card ── */
 .skill-category {
   padding: 1.75rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
+  /* Dark translucent base + Category-specific radial glow in top right */
+  background: 
+    radial-gradient(circle at 100% 0%, rgba(var(--cat-color), 0.12) 0%, transparent 65%),
+    rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
-  /* §4 springs via framer-motion handle the reveal; CSS handles hover */
-  transition: background 0.3s ease, border-color 0.3s ease;
+  /* Persistent deep shadow */
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.04),
+    0 8px 32px rgba(0, 0, 0, 0.4), 
+    0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .skill-category:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-hover);
+  background: 
+    radial-gradient(circle at 100% 0%, rgba(var(--cat-color), 0.18) 0%, transparent 75%),
+    rgba(28, 28, 28, 0.7);
+  border-color: rgba(var(--cat-color), 0.25);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    0 12px 48px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(var(--cat-color), 0.15);
 }
 
 .skill-category-header {
@@ -25,6 +49,7 @@
   margin-bottom: 1.25rem;
 }
 
+/* ── Icon Pop ── */
 .skill-icon {
   width: 36px;
   height: 36px;
@@ -34,19 +59,17 @@
   justify-content: center;
   font-size: 1.1rem;
   flex-shrink: 0;
+  /* Uses the parent's --cat-color */
+  background: rgba(var(--cat-color), 0.15);
+  color: rgb(var(--cat-color));
+  box-shadow: 0 4px 12px rgba(var(--cat-color), 0.2);
 }
-
-.skill-icon.lang    { background: rgba(124, 58, 237, 0.15); color: var(--accent-violet); }
-.skill-icon.backend { background: rgba(59, 130, 246, 0.15);  color: var(--accent-blue);   }
-.skill-icon.db      { background: rgba(16, 185, 129, 0.15);  color: var(--accent-green);  }
-.skill-icon.cloud   { background: rgba(6, 182, 212, 0.15);   color: var(--accent-cyan);   }
-.skill-icon.ai      { background: rgba(236, 72, 153, 0.15);  color: var(--accent-pink);   }
-.skill-icon.auto    { background: rgba(245, 158, 11, 0.15);  color: var(--accent-amber);  }
 
 .skill-category-name {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .skill-tags {
@@ -55,25 +78,45 @@
   gap: 0.5rem;
 }
 
+/* ── Premium Glass Tags ── */
 .skill-tag {
   padding: 0.35rem 0.85rem;
-  background: var(--bg-glass-strong);
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.8);
   /* §1 Response: instant hover feedback */
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: all 0.2s ease;
   cursor: default;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .skill-tag:hover {
-  background: rgba(124, 58, 237, 0.12);
-  color: var(--text-accent);
-  border-color: rgba(124, 58, 237, 0.25);
+  background: rgba(var(--cat-color), 0.15);
+  color: #fff;
+  border-color: rgba(var(--cat-color), 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* ── Mobile Carousel Tweaks ── */
 @media (max-width: 768px) {
-  .skills-grid { grid-template-columns: 1fr; }
+  .carousel-slide .skill-category {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .carousel-slide .skill-category:hover {
+    /* Reset hover on mobile */
+    background: 
+      radial-gradient(circle at 100% 0%, rgba(var(--cat-color), 0.12) 0%, transparent 65%),
+      rgba(20, 20, 20, 0.6);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 
+      inset 0 1px 1px rgba(255, 255, 255, 0.04),
+      0 8px 32px rgba(0, 0, 0, 0.4), 
+      0 2px 8px rgba(0, 0, 0, 0.2);
+  }
 }
