@@ -34,7 +34,7 @@ export const personalInfo = {
 export const about = {
   paragraphs: [
     "I am a Backend Software Engineer with a deep focus on distributed systems and microservice architecture. My expertise lies in designing resilient infrastructure, managing asynchronous workflows, and tuning system performance to deliver seamless experiences.",
-    "From resolving critical security vulnerabilities to re-architecting monolithic services into high-throughput APIs, I take pride in engineering the robust foundation that products rely on. I also bridge the gap between traditional backend systems and artificial intelligence, building autonomous AI agents and integrating language models to automate complex workflows. I don't just solve tickets; I engineer long-term solutions."
+    "From resolving critical security vulnerabilities to re-architecting monolithic services into high-throughput APIs, I take pride in engineering the robust foundation that products rely on. I also bridge the gap between traditional backend systems and artificial intelligence, building autonomous AI agents and integrating language models to automate complex workflows. I don't just solve tickets; I engineer long-term solutions. (Unless it's a P0 at 2am — then I just pray and deploy.)"
   ],
   quote: "An engineer by choice, driven by a lifelong curiosity to understand how things work and the passion to build them better.",
   stats: [
@@ -62,7 +62,7 @@ export const skills = [
     category: "Databases",
     icon: "🗄",
     colorClass: "db",
-    items: ["PostgreSQL", "MySQL", "SingleStore", "SQLite", "FAISS"],
+    items: ["PostgreSQL", "MySQL", "SingleStore", "SQLite", "FAISS 🐛"],
   },
   {
     category: "Cloud & DevOps",
@@ -80,7 +80,7 @@ export const skills = [
     category: "Workflow Automation",
     icon: "⚡",
     colorClass: "auto",
-    items: ["Pandas", "Rundeck", "ServiceNow"],
+    items: ["Pandas", "Rundeck", "ServiceNow", "Reading Error Logs at 3 AM"],
   },
 ];
 

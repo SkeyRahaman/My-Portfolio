@@ -27,9 +27,20 @@ function SkillCard({ cat }) {
         <span className="skill-category-name">{cat.category}</span>
       </div>
       <div className="skill-tags">
-        {cat.items.map((item) => (
-          <span key={item} className="skill-tag">{item}</span>
-        ))}
+        {cat.items.map((item) => {
+          const isBug = item.includes('🐛');
+          return (
+            <span 
+              key={item} 
+              className="skill-tag"
+              onClick={isBug ? () => alert("You found a bug! Don't worry, I always fix them before production.") : undefined}
+              style={isBug ? { cursor: 'pointer' } : {}}
+              title={isBug ? 'Click me!' : undefined}
+            >
+              {item}
+            </span>
+          );
+        })}
       </div>
     </div>
   );

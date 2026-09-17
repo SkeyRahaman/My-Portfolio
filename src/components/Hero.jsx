@@ -78,7 +78,7 @@ export default function Hero() {
           >
             I build fast backend systems, design event-driven microservices, and
             experiment with AI agent orchestration. Turning complex problems into
-            scalable, automated solutions.
+            scalable, automated solutions. And yes, I still Google how to center a &lt;div&gt;.
           </motion.p>
 
           <motion.div
@@ -129,6 +129,7 @@ export default function Hero() {
                 custom={i}
                 variants={floatVariants}
                 animate="animate"
+                title={card.label === 'LeetCode Problems' ? 'Send help.' : undefined}
               >
                 <div className="card-value">{card.value}</div>
                 <div className="card-label">{card.label}</div>
