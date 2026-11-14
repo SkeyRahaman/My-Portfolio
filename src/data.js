@@ -208,18 +208,18 @@ export const education = {
 
 export const certifications = [
   {
-    title: "Claude Certified Architect - Foundations",
-    issuer: "Anthropic",
-    badgeUrl: "https://www.credly.com/badges/6af72369-0620-493b-99ba-321b846ea291/public_url",
-    issued: "August 2026",
-    expires: "August 2027",
-    icon: certClaudeFoundations,
-  },{
     title: "Claude Certified Architect - Professional",
     issuer: "Anthropic",
     badgeUrl: "https://www.credly.com/badges/b6dc32f3-7428-47a6-94f2-20cfcc173efd/public_url",
     issued: "November 2026",
     expires: "November 2027",
     icon: certClaudeProfessional,
+  },{
+    title: "Claude Certified Architect - Foundations",
+    issuer: "Anthropic",
+    badgeUrl: "https://www.credly.com/badges/6af72369-0620-493b-99ba-321b846ea291/public_url",
+    issued: "August 2026",
+    expires: "August 2027",
+    icon: certClaudeFoundations,
   },
 ];
