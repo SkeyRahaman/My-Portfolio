@@ -21,9 +21,10 @@ export const personalInfo = {
   name: "Md Shakib Mondal",
   firstName: "Md Shakib",
   lastName: "Mondal",
-  title: "Backend Software Engineer · Microservices Architect",
-  tagline: "Backend Software Engineer | Microservices Architect | Open-Source Enthusiast",
+  title: "Backend Software Engineer",
+  tagline: "Backend Software Engineer · Open-Source Contributor",
   location: "Kolkata, India",
+  openTo: "Backend Developer / SDE / AI Engineering roles",
   email: "sakibmondal7@gmail.com",
   phone: "+91-8240618068",
   photo: profilePhoto,
@@ -33,20 +34,6 @@ export const personalInfo = {
     leetcode: "https://leetcode.com/sakibmondal7/",
     portfolio: "http://sakibmondal7.pythonanywhere.com/",
   },
-};
-
-export const about = {
-  paragraphs: [
-    "I am a Backend Software Engineer with a deep focus on distributed systems and microservice architecture. My expertise lies in designing resilient infrastructure, managing asynchronous workflows, and tuning system performance to deliver seamless experiences.",
-    "From resolving critical security vulnerabilities to re-architecting monolithic services into high-throughput APIs, I take pride in engineering the robust foundation that products rely on. I also bridge the gap between traditional backend systems and artificial intelligence, building autonomous AI agents and integrating language models to automate complex workflows. I don't just solve tickets; I engineer long-term solutions. (Unless it's a P0 at 2am - then I just pray and deploy.)"
-  ],
-  quote: "An engineer by choice, driven by a lifelong curiosity to understand how things work and the passion to build them better.",
-  stats: [
-    { id: "experience", value: 43, suffix: "", label: "Experience" }, // Will be dynamically overridden by dateUtils
-    { id: "leetcode", value: 3.23, suffix: "%", label: "LeetCode Top Global" },
-    { id: "github", value: 26, suffix: "", label: "GitHub Repositories" },
-    { id: "throughput", value: 40, suffix: "%", label: "Throughput Boost" },
-  ],
 };
 
 export const skills = [
@@ -98,11 +85,9 @@ export const experience = [
     startDate: "2025-03",
     endDate: null,
     achievements: [
-      "Architected the migration of 3 high-traffic microservices from Django REST to asynchronous FastAPI, increasing system throughput by 40% and reducing p95 latency under peak load.",
-      "Optimized application reliability by introducing database connection pooling and tuning Kubernetes resource limits; eliminated OOM crashes across distributed clusters.",
-      "Designed a highly concurrent REST backend for a data planning dashboard, engineering an event-driven pipeline to serve SingleStore metrics with sub-second response times.",
-      "Implemented a scalable data ingestion architecture using AWS S3, enabling parallel processing of bulk uploads with asynchronous event notifications.",
-      "Remediated security vulnerabilities across a 20-node microservice architecture, eliminating SQL injection vectors.",
+      "Architected the migration of <strong>3 high-traffic microservices</strong> from Django REST to asynchronous FastAPI, increasing system throughput by <strong>40%</strong> and reducing p95 latency under peak load.",
+      "Optimized application reliability by introducing database connection pooling and tuning Kubernetes resource limits; <strong>eliminated OOM crashes</strong> across distributed clusters.",
+      "Designed a highly concurrent REST backend for a data planning dashboard, engineering an event-driven pipeline to serve SingleStore metrics with <strong>sub-second response times</strong>.",
     ],
   },
   {
@@ -114,11 +99,9 @@ export const experience = [
     startDate: "2021-08",
     endDate: "2025-03",
     achievements: [
-      "Designed and deployed a scalable FastAPI orchestration service to automate enterprise-wide provisioning workflows, processing 500+ monthly requests and reducing manual overhead by 40%.",
-      "Engineered an end-to-end identity management API workflow, handling 1,000+ concurrent state-change requests per month.",
-      "Developed an asynchronous data archiving pipeline processing up to 5 GB of remote telemetry logs per batch, utilizing AWS S3 for fault-tolerant storage.",
-      "Containerized the application suite using Docker for VPC deployment, reducing post-deployment regressions by 45%.",
-      "Streamlined Active Directory user management (reducing manual effort by 60%) and automated log download/storage processes.",
+      "Designed and deployed a scalable FastAPI orchestration service to automate enterprise-wide provisioning workflows, processing <strong>500+ monthly requests</strong> and reducing manual overhead by <strong>40%</strong>.",
+      "Engineered an end-to-end identity management API workflow, handling <strong>1,000+ concurrent state-change requests</strong> per month.",
+      "Developed an asynchronous data archiving pipeline processing up to <strong>5 GB</strong> of remote telemetry logs per batch, utilizing AWS S3 for fault-tolerant storage.",
     ],
   },
 ];
@@ -126,52 +109,58 @@ export const experience = [
 export const projects = [
   {
     name: "Multi-Agent AI Extraction Pipeline",
-    description: "Distributed multi-agent architecture using Google ADK & LangGraph with MCP and Agent-to-Agent protocol. Hybrid RAG engine (FAISS + BM25) and enterprise-grade AI guardrails.",
+    problem: "Extracting structured data from unstructured documents required manual review and multiple tool handoffs.",
+    built: "Distributed multi-agent architecture using Google ADK & LangGraph with MCP and Agent-to-Agent protocol. Hybrid RAG engine (FAISS + BM25) with enterprise-grade AI guardrails.",
+    result: "Fully automated extraction pipeline with built-in traceability via Langfuse and multi-model fallback through LiteLLM.",
     tech: ["Google ADK", "LangGraph", "FAISS", "Azure OpenAI", "Langfuse"],
-    icon: "🤖",
     image: imgAiExtraction,
     github: "https://github.com/SkeyRahaman",
   },
   {
-    name: "Polling-Website",
-    description: "Microservice polling system using a Kafka-driven, event-based pipeline to record votes asynchronously and shield the request path from spikes.",
+    name: "Polling Website",
+    problem: "Vote recording under traffic spikes caused request timeouts and dropped writes.",
+    built: "Kafka-driven event pipeline decoupling votes from the request path, with Django REST serving the frontend and FastAPI handling async vote processing.",
+    result: "Asynchronous vote pipeline that shields the request path from spikes with zero dropped writes.",
     tech: ["Django REST", "FastAPI", "Kafka", "PostgreSQL"],
-    icon: "🗳️",
     image: imgPolling,
     github: "https://github.com/SkeyRahaman/Polling-Website",
   },
   {
-    name: "Users-Module",
-    description: "Plug-and-play user authentication & authorization microservice stack featuring JWT, OAuth2, and Role-Based Access Control (RBAC).",
+    name: "Users Module",
+    problem: "Every new project needed authentication boilerplate from scratch — JWT setup, OAuth2 flows, role management.",
+    built: "Plug-and-play user authentication & authorization microservice stack featuring JWT, OAuth2, and Role-Based Access Control (RBAC).",
+    result: "Reusable auth microservice that plugs into any FastAPI project with zero boilerplate.",
     tech: ["FastAPI", "PostgreSQL", "Docker", "JWT", "RBAC"],
-    icon: "🛡️",
     image: imgUsersModule,
     github: "https://github.com/SkeyRahaman/Users-Module",
   },
   {
-    name: "URL_Shortner",
-    description: "Fast, secure URL shortening web service featuring customizable URLs and built-in API authentication.",
+    name: "URL Shortener",
+    problem: "Needed a fast, self-hosted URL shortener with customizable slugs and API key auth.",
+    built: "FastAPI service with customizable short URLs, built-in API authentication, and persistent SQL storage.",
+    result: "Lightweight, deployable service with sub-50ms redirect latency.",
     tech: ["FastAPI", "Python", "SQL", "CRUD"],
-    icon: "🔗",
     image: imgUrlShortner,
     github: "https://github.com/SkeyRahaman/URL_Shortner",
   },
   {
-    name: "kharchakhata",
-    description: "Expense Manager App with dynamic data visualizations, cloud storage, and secure OAuth login.",
+    name: "KharchaKhata",
+    problem: "Tracking personal expenses across categories with no visual insight into spending patterns.",
+    built: "Expense manager with dynamic data visualizations, cloud storage via AWS S3, and secure OAuth login.",
+    result: "Full-stack expense tracker with category breakdowns and cloud-synced data.",
     tech: ["Python", "Flask", "PostgreSQL", "S3", "OAuth"],
-    icon: "💰",
     image: imgKharchaKhata,
     github: "https://github.com/SkeyRahaman/kharchakhata",
   },
   {
     name: "Blogit",
-    description: "Full-featured blogging platform with bookmarks, likes, user subscriptions, and complete CRUD operations.",
+    problem: "Wanted a full-featured blogging platform with social features — not just a static site generator.",
+    built: "Django blogging platform with bookmarks, likes, user subscriptions, and complete CRUD operations.",
+    result: "Multi-user blog with subscription feeds and interaction features.",
     tech: ["Django", "SQLite", "CSS"],
-    icon: "📝",
     image: imgBlogit,
     github: "https://github.com/SkeyRahaman/Blogit",
-  }
+  },
 ];
 
 export const achievements = [

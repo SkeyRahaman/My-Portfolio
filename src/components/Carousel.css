@@ -80,28 +80,40 @@
     right: 4px;
   }
 
-  /* ── Dot indicators — minimal page dots ── */
+  /* ── Dot indicators — minimal page dots with 24px touch targets (WCAG 2.2) ── */
   .carousel-dots {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 4px;
     padding: 4px 0;
   }
 
   .carousel-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: var(--radius-full);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     padding: 0;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.35);
-    transition: background 0.2s ease;
+    background: transparent;
   }
 
-  .carousel-dot--active {
+  .carousel-dot::after {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.35);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .carousel-dot--active::after {
     background: var(--accent-violet);
+    transform: scale(1.15);
   }
 
   /* ── §14 Reduced motion ── */

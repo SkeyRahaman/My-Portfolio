@@ -90,7 +90,7 @@ export default function Experience() {
                 </div>
                 <div className="timeline-achievements">
                   {job.achievements.map((text, j) => (
-                    <p key={j} className="timeline-achievement">{text}</p>
+                    <p key={j} className="timeline-achievement" dangerouslySetInnerHTML={{ __html: text }} />
                   ))}
                 </div>
               </div>
