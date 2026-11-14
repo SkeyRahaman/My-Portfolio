@@ -24,7 +24,6 @@ const GithubIcon = () => (
   </svg>
 );
 
-/* ── Project card — shared between carousel and grid ────────────────── */
 function ProjectCard({ proj, isCarousel }) {
   return (
     <div className="project-card">
@@ -32,11 +31,25 @@ function ProjectCard({ proj, isCarousel }) {
         {proj.image && (
           <img src={proj.image} alt={proj.name} draggable={false} />
         )}
-        <div className="project-icon">{proj.icon}</div>
       </div>
       <div className="project-body">
         <h3 className="project-name">{proj.name}</h3>
-        <p className="project-desc">{proj.description}</p>
+
+        <div className="project-sections">
+          <div className="project-section">
+            <span className="project-section-label">Problem</span>
+            <p>{proj.problem}</p>
+          </div>
+          <div className="project-section">
+            <span className="project-section-label">Built</span>
+            <p>{proj.built}</p>
+          </div>
+          <div className="project-section">
+            <span className="project-section-label">Result</span>
+            <p>{proj.result}</p>
+          </div>
+        </div>
+
         <div className="project-tech">
           {proj.tech.map((t) => (
             <span key={t} className="project-tech-tag">{t}</span>
@@ -56,11 +69,10 @@ function ProjectCard({ proj, isCarousel }) {
   );
 }
 
-/* ── Main component ─────────────────────────────────────────────────── */
 export default function Projects() {
   const sectionRef = useRef(null);
-  const trackRef   = useRef(null);
-  const inView     = useInView(sectionRef, { once: true, margin: '-80px' });
+  const trackRef = useRef(null);
+  const inView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   const { currentIndex, x, handlers, isActive, snapTo } = useCarousel({
     itemCount: projects.length,
@@ -70,7 +82,6 @@ export default function Projects() {
   return (
     <section className="projects section" id="projects">
       <div className="container" ref={sectionRef}>
-        {/* Section header */}
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 24 }}
@@ -80,12 +91,11 @@ export default function Projects() {
           <span className="section-label">Projects</span>
           <h2 className="section-title">Things I&apos;ve built</h2>
           <p className="section-subtitle">
-            Open-source projects and production-grade systems exploring distributed
-            architecture, AI agents, and full-stack development.
+            Open-source projects exploring distributed architecture,
+            AI agents, and full-stack development.
           </p>
         </motion.div>
 
-        {/* ── Mobile carousel ── */}
         {isActive ? (
           <div className="carousel-viewport">
             <div className="carousel-stage">
@@ -138,7 +148,6 @@ export default function Projects() {
             />
           </div>
         ) : (
-          /* ── Desktop grid (unchanged) ── */
           <motion.div
             className="projects-grid"
             variants={containerVariants}

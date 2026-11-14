@@ -18,13 +18,3 @@ export const formatExperience = (totalMonths) => {
   if (years > 0) return `${years} yrs`;
   return `${months} mos`;
 };
-
-export const formatExperienceShort = (totalMonths) => {
-  const roundedMonths = Math.floor(totalMonths);
-  const years = Math.floor(roundedMonths / 12);
-  const months = roundedMonths % 12;
-  
-  if (years > 0 && months > 0) return `${years}y ${months}m`;
-  if (years > 0) return `${years}y`;
-  return `${months}m`;
-};

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://skeyrahaman.github.io/My-Portfolio/sitemap.xml
