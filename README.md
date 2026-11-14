@@ -1,37 +1,34 @@
-# Md Shakib Mondal — Backend Software Engineer Portfolio
+# My Portfolio
 
-This is the source code for my personal developer portfolio, built with React, Vite, and Framer Motion. 
-It features a dark-mode glassmorphism aesthetic inspired by modern enterprise software and Apple design principles.
+Welcome to my personal portfolio repository!
 
-## Features
-- **Centralized Data Layer:** All content is driven by a single `src/data.js` file.
-- **Performance Optimized:** Fully static, zero unreliable external API fetches on load. 
-- **Animations:** High-performance, interruptible spring animations powered by Framer Motion.
-- **Accessibility:** Reduced motion and semantic HTML structure built-in.
-- **Responsive:** Fluid typography and layouts that scale from desktop down to mobile.
+**Live Demo**: [https://skeyrahaman.github.io/My-Portfolio/](https://skeyrahaman.github.io/My-Portfolio/)
 
 ## Tech Stack
-- **Framework:** React 18
-- **Build Tool:** Vite
-- **Animations:** Framer Motion
-- **Styling:** Vanilla CSS (CSS Variables, Flexbox, CSS Grid)
-- **Deployment:** GitHub Pages via GitHub Actions
+- React + Vite
+- Framer Motion (Animations & Spring Physics)
+- Vanilla CSS (Glassmorphism design system)
+- GraphQL (Live LeetCode Stats integration)
 
-## Running Locally
+## Development
 
-1. Clone the repository
+To run this project locally:
+
+1. Clone the repository (make sure you are on the `react` branch):
+   ```bash
+   git clone https://github.com/SkeyRahaman/My-Portfolio.git
+   cd My-Portfolio
+   ```
+
 2. Install dependencies:
    ```bash
    npm install
    ```
+
 3. Start the development server:
    ```bash
    npm run dev
    ```
-4. Build for production:
-   ```bash
-   npm run build
-   ```
 
-## Design System
-The design system is heavily documented in the included `SKILL.md` file, which outlines the principles of spatial consistency, animation response times, and material depth used throughout the site.
+## Deployment
+This project is automatically built and deployed to GitHub Pages via GitHub Actions. Any push to the `react` branch triggers the deployment workflow (`.github/workflows/deploy.yml`) which publishes to the `gh-pages` branch.

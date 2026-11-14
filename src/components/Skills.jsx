@@ -6,6 +6,7 @@ import { CarouselDots, ChevronLeft, ChevronRight } from './CarouselUI';
 import './Carousel.css';
 import './Skills.css';
 
+/* §4: critically damped spring for card reveals */
 const cardSpring = { type: 'spring', bounce: 0, duration: 0.5 };
 
 const containerVariants = {
@@ -29,8 +30,8 @@ function SkillCard({ cat }) {
         {cat.items.map((item) => {
           const isBug = item.includes('🐛');
           return (
-            <span
-              key={item}
+            <span 
+              key={item} 
               className="skill-tag"
               onClick={isBug ? () => alert("You found a bug! Don't worry, I always fix them before production.") : undefined}
               style={isBug ? { cursor: 'pointer' } : {}}
