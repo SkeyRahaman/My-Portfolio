@@ -87,6 +87,7 @@ export default function Contact() {
       <div className="container" ref={ref}>
         <motion.div
           className="section-header"
+          style={{ marginBottom: '2rem' }}
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={spring}

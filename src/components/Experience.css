@@ -39,6 +39,12 @@
   inset: -4px;
   border-radius: 50%;
   background: rgba(124, 58, 237, 0.2);
+  animation: pulse-ring 3s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.5); }
 }
 
 .timeline-card {
@@ -86,8 +92,8 @@
 
 .timeline-date {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: #9CA3AF;
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
 }
 
 .timeline-account {
@@ -98,7 +104,7 @@
   /* §12 Materials: translucent chip with depth */
   background: var(--bg-glass-strong);
   border-radius: var(--radius-full);
-  font-size: 0.8125rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--text-secondary);
   text-transform: uppercase;
@@ -137,16 +143,9 @@
   margin-top: 0.1em;
 }
 
-.timeline-achievement strong {
-  color: var(--text-primary);
-  font-weight: 700;
-}
-
 @media (max-width: 768px) {
   .timeline { padding-left: 1.5rem; }
   .timeline-dot { left: -1.5rem; }
   .timeline-header { flex-direction: column; }
   .timeline-meta { align-items: flex-start; }
-  .timeline-date { font-size: 0.8125rem; }
-  .timeline-account { font-size: 0.8125rem; }
 }

@@ -42,7 +42,7 @@ const AnimatedNumber = ({ value, formatter = Math.floor, duration = 2, delay = 0
     return () => controls.stop();
   }, [value, isInView, duration, delay, formatter]);
 
-  return <span ref={nodeRef} className="animated-number">{formatter(value)}</span>;
+  return <span ref={nodeRef} className="animated-number">0</span>;
 };
 
 export default AnimatedNumber;
