@@ -84,7 +84,7 @@
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
-  font-size: 0.8125rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
   /* §1 Response: instant hover feedback */
@@ -100,6 +100,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* ── Mobile Carousel Tweaks ── */
 @media (max-width: 768px) {
   .carousel-slide .skill-category {
     height: 100%;
