@@ -21,7 +21,11 @@ const cardVariants = {
 function CertificationCard({ cert }) {
   return (
     <div className="certification-card">
-      <div className="certification-icon">{cert.icon}</div>
+      <div className="certification-icon">
+        {cert.icon && cert.icon.length > 2
+          ? <img src={cert.icon} alt={cert.title} style={{width: '100%', height: '100%', objectFit: 'contain', borderRadius: '8px'}} />
+          : cert.icon}
+      </div>
       
       <div className="certification-info">
         <h3 className="certification-title">{cert.title}</h3>
