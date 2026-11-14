@@ -1,34 +1,37 @@
-# My Portfolio
+# Md Shakib Mondal — Backend Software Engineer Portfolio
 
-Welcome to my personal portfolio repository!
+This is the source code for my personal developer portfolio, built with React, Vite, and Framer Motion. 
+It features a dark-mode glassmorphism aesthetic inspired by modern enterprise software and Apple design principles.
 
-**Live Demo**: [https://skeyrahaman.github.io/My-Portfolio/](https://skeyrahaman.github.io/My-Portfolio/)
+## Features
+- **Centralized Data Layer:** All content is driven by a single `src/data.js` file.
+- **Performance Optimized:** Fully static, zero unreliable external API fetches on load. 
+- **Animations:** High-performance, interruptible spring animations powered by Framer Motion.
+- **Accessibility:** Reduced motion and semantic HTML structure built-in.
+- **Responsive:** Fluid typography and layouts that scale from desktop down to mobile.
 
 ## Tech Stack
-- React + Vite
-- Framer Motion (Animations & Spring Physics)
-- Vanilla CSS (Glassmorphism design system)
-- GraphQL (Live LeetCode Stats integration)
+- **Framework:** React 18
+- **Build Tool:** Vite
+- **Animations:** Framer Motion
+- **Styling:** Vanilla CSS (CSS Variables, Flexbox, CSS Grid)
+- **Deployment:** GitHub Pages via GitHub Actions
 
-## Development
+## Running Locally
 
-To run this project locally:
-
-1. Clone the repository (make sure you are on the `react` branch):
-   ```bash
-   git clone https://github.com/SkeyRahaman/My-Portfolio.git
-   cd My-Portfolio
-   ```
-
+1. Clone the repository
 2. Install dependencies:
    ```bash
    npm install
    ```
-
 3. Start the development server:
    ```bash
    npm run dev
    ```
+4. Build for production:
+   ```bash
+   npm run build
+   ```
 
-## Deployment
-This project is automatically built and deployed to GitHub Pages via GitHub Actions. Any push to the `react` branch triggers the deployment workflow (`.github/workflows/deploy.yml`) which publishes to the `gh-pages` branch.
+## Design System
+The design system is heavily documented in the included `SKILL.md` file, which outlines the principles of spatial consistency, animation response times, and material depth used throughout the site.

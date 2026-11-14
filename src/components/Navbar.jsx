@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
+import resumePdf from '../assets/Md_Shakib_Mondal_CV.pdf';
 import './Navbar.css';
 
 const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Credentials', href: '#credentials' },
-  { label: 'Achievements', href: '#achievements' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -43,6 +42,15 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href={resumePdf}
+              download="Md_Shakib_Mondal_CV.pdf"
+              className="nav-resume-btn"
+            >
+              Resume
+            </a>
+          </li>
         </ul>
         <button
           className={`nav-toggle ${menuOpen ? 'active' : ''}`}

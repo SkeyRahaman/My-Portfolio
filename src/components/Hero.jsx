@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { personalInfo, achievements } from '../data';
-import { getMonthsSince, formatExperienceShort } from '../utils/dateUtils';
+import { personalInfo } from '../data';
+import resumePdf from '../assets/Md_Shakib_Mondal_CV.pdf';
 import './Hero.css';
 
 const fadeUp = {
@@ -12,26 +12,7 @@ const fadeUp = {
   }),
 };
 
-const floatVariants = {
-  animate: (i) => ({
-    y: [0, -8, 0],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      ease: 'easeInOut',
-      delay: i * 2,
-    },
-  }),
-};
-
 export default function Hero() {
-  const leetcodeData = achievements.find(a => a.platform === 'LeetCode');
-  const leetcodeStats = leetcodeData ? leetcodeData.stats : [];
-  const topGlobalStat = leetcodeStats.find(s => s.label === 'Top Global');
-  const problemsSolvedStat = leetcodeStats.find(s => s.label === 'Problems Solved');
-
-  const totalExperienceMonths = getMonthsSince('2021-08-01');
-
   return (
     <section className="hero section" id="hero">
       <div className="hero-grid" />
@@ -59,15 +40,15 @@ export default function Hero() {
             {personalInfo.title}
           </motion.p>
 
-          <motion.blockquote
-            className="hero-quote"
+          <motion.p
+            className="hero-meta"
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={2.5}
           >
-            "An engineer by choice, driven by a lifelong curiosity to understand how things work and the passion to build them better."
-          </motion.blockquote>
+            📍 {personalInfo.location} · Open to {personalInfo.openTo}
+          </motion.p>
 
           <motion.p
             className="hero-description"
@@ -76,9 +57,9 @@ export default function Hero() {
             animate="visible"
             custom={3}
           >
-            I build fast backend systems, design event-driven microservices, and
-            experiment with AI agent orchestration. Turning complex problems into
-            scalable, automated solutions. And yes, I still Google how to center a &lt;div&gt;.
+            I design event-driven backends and migrate monoliths to
+            microservices — most recently boosting throughput 40% at
+            enterprise scale. (Unless it's a P0 at 2am - then I just pray and deploy.) And yes, I still Google how to center a &lt;div&gt;.
           </motion.p>
 
           <motion.div
@@ -94,6 +75,18 @@ export default function Hero() {
                 <polyline points="22,6 12,13 2,6" />
               </svg>
               Get in Touch
+            </a>
+            <a
+              href={resumePdf}
+              download="Md_Shakib_Mondal_CV.pdf"
+              className="btn btn-secondary"
+            >
+              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Resume
             </a>
             <a href={personalInfo.links.github} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" title="45 repos, 3 finished">
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
@@ -118,23 +111,6 @@ export default function Hero() {
               className="hero-photo"
               loading="lazy"
             />
-            {[
-              { value: `${problemsSolvedStat?.value || 1000}+`, label: 'LeetCode Problems' },
-              { value: formatExperienceShort(totalExperienceMonths), label: 'Experience' },
-              { value: `Top ${topGlobalStat?.value || 2}%`, label: 'Global Ranking' },
-            ].map((card, i) => (
-              <motion.div
-                key={card.label}
-                className="floating-card"
-                custom={i}
-                variants={floatVariants}
-                animate="animate"
-                title={card.label === 'LeetCode Problems' ? 'Send help.' : undefined}
-              >
-                <div className="card-value">{card.value}</div>
-                <div className="card-label">{card.label}</div>
-              </motion.div>
-            ))}
           </div>
         </motion.div>
       </div>

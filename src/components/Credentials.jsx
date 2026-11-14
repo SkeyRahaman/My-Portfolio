@@ -1,6 +1,6 @@
-import { useRef, useMemo } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { certifications, education } from '../data';
+import { certifications, education, achievements } from '../data';
 import { useCarousel } from '../utils/useCarousel';
 import { CarouselDots, ChevronLeft, ChevronRight } from './CarouselUI';
 import './Carousel.css';
@@ -82,15 +82,47 @@ function EducationCard({ edu }) {
   );
 }
 
+function AchievementInline({ ach }) {
+  return (
+    <div className={`achievement-inline ${ach.colorClass}`}>
+      <div className="achievement-inline-header">
+        <div className="achievement-inline-icon">{ach.platformIcon}</div>
+        <span className="achievement-inline-name">{ach.platform}</span>
+        {ach.link && (
+          <a 
+            href={ach.link} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="achievement-inline-link"
+            onPointerDown={(e) => e.stopPropagation()}
+          >
+            View →
+          </a>
+        )}
+      </div>
+      <div className="achievement-inline-stats">
+        {ach.stats.map((stat) => (
+          <div key={stat.label} className="achievement-inline-stat">
+            <span className="achievement-inline-value">
+              {Number.isInteger(stat.value) ? stat.value : stat.value.toFixed(2)}{stat.suffix}
+            </span>
+            <span className="achievement-inline-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Credentials() {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
   const inView = useInView(sectionRef, { once: true, margin: '-80px' });
 
-  // Calculate total items for carousel
   const certsCount = certifications ? certifications.length : 0;
   const eduCount = education ? 1 : 0;
-  const itemsCount = certsCount + eduCount;
+  const achCount = achievements ? achievements.length : 0;
+  const itemsCount = certsCount + eduCount + achCount;
 
   const { currentIndex, x, handlers, isActive, snapTo } = useCarousel({
     itemCount: itemsCount,
@@ -107,7 +139,7 @@ export default function Credentials() {
           transition={spring}
         >
           <span className="section-label">Credentials</span>
-          <h2 className="section-title">Verified credentials & Academic background</h2>
+          <h2 className="section-title">Certifications, education & achievements</h2>
         </motion.div>
 
         {isActive && itemsCount > 0 ? (
@@ -132,6 +164,11 @@ export default function Credentials() {
                       <EducationCard edu={education} />
                     </div>
                   )}
+                  {achievements && achievements.map((ach) => (
+                    <div key={ach.platform} className="carousel-slide">
+                      <AchievementInline ach={ach} />
+                    </div>
+                  ))}
                 </motion.div>
               </div>
 
@@ -165,7 +202,7 @@ export default function Credentials() {
           </div>
         ) : (
           <motion.div
-            className="certifications-grid"
+            className="credentials-grid"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
@@ -188,6 +225,16 @@ export default function Credentials() {
                 <EducationCard edu={education} />
               </motion.div>
             )}
+
+            {achievements && achievements.map((ach) => (
+              <motion.div
+                key={ach.platform}
+                variants={cardVariants}
+                whileHover={{ y: -2, transition: { type: 'spring', bounce: 0, duration: 0.3 } }}
+              >
+                <AchievementInline ach={ach} />
+              </motion.div>
+            ))}
           </motion.div>
         )}
       </div>
